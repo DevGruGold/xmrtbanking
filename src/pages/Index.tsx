@@ -103,6 +103,8 @@ const Index = () => {
               className="border-0"
               display="block"
               position="relative"
+              allow="fullscreen"
+              allowFullScreen
             />
           </div>
         </div>
