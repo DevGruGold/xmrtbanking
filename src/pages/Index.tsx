@@ -11,7 +11,8 @@ import {
   AlertTriangle,
   Download,
   Terminal,
-  Activity
+  Activity,
+  ExternalLink
 } from 'lucide-react';
 
 const UnifiedDeployment = () => {
@@ -19,6 +20,7 @@ const UnifiedDeployment = () => {
   const [deploymentStatus, setDeploymentStatus] = useState('idle');
   const [progress, setProgress] = useState(0);
   const [deviceId, setDeviceId] = useState('');
+  const [installStep, setInstallStep] = useState(0);
 
   const platforms = [
     {
@@ -37,19 +39,82 @@ const UnifiedDeployment = () => {
     }
   ];
 
+  const androidSteps = [
+    {
+      title: "Install Termux",
+      description: "First, download and install Termux from F-Droid store. Do not use the Play Store version as it's outdated.",
+      action: "Download Termux",
+      link: "https://f-droid.org/en/packages/com.termux/"
+    },
+    {
+      title: "Install Python",
+      description: "Open Termux and run the following command:",
+      command: "pkg install python",
+      action: "Next Step"
+    },
+    {
+      title: "Ready to Deploy",
+      description: "Python is installed. You can now proceed with the mining setup.",
+      action: "Start Mining"
+    }
+  ];
+
   const handleDeploy = async () => {
     if (!selectedPlatform) return;
+
+    if (selectedPlatform === 'android' && installStep < androidSteps.length - 1) {
+      setInstallStep(prev => prev + 1);
+      return;
+    }
 
     setDeploymentStatus('deploying');
     setDeviceId(`xmrt_${Math.random().toString(36).substring(7)}`);
 
-    // Simulate deployment steps
     for (let i = 0; i <= 100; i += 20) {
       setProgress(i);
       await new Promise(resolve => setTimeout(resolve, 1000));
     }
 
     setDeploymentStatus('complete');
+  };
+
+  const renderAndroidSetup = () => {
+    const currentStep = androidSteps[installStep];
+    return (
+      <Card className="bg-gray-800 border-gray-700">
+        <CardContent className="p-6 space-y-4">
+          <div className="space-y-4">
+            <h3 className="text-lg font-semibold text-white">{currentStep.title}</h3>
+            <p className="text-gray-400">{currentStep.description}</p>
+            
+            {currentStep.command && (
+              <div className="bg-gray-900 p-3 rounded-md font-mono text-sm text-gray-300">
+                $ {currentStep.command}
+              </div>
+            )}
+
+            <Button 
+              className="w-full bg-gradient-to-r from-blue-500 to-purple-500 hover:opacity-90"
+              onClick={currentStep.link ? () => window.open(currentStep.link, '_blank') : handleDeploy}
+            >
+              {currentStep.link ? <ExternalLink className="h-4 w-4 mr-2" /> : <Download className="h-4 w-4 mr-2" />}
+              {currentStep.action}
+            </Button>
+          </div>
+
+          <div className="flex justify-center space-x-2">
+            {androidSteps.map((_, index) => (
+              <div
+                key={index}
+                className={`h-2 w-2 rounded-full ${
+                  index === installStep ? 'bg-blue-500' : 'bg-gray-600'
+                }`}
+              />
+            ))}
+          </div>
+        </CardContent>
+      </Card>
+    );
   };
 
   const renderStatus = () => {
@@ -101,7 +166,11 @@ const UnifiedDeployment = () => {
                   ? 'border-blue-500' 
                   : 'border-gray-700 hover:border-gray-600'
               }`}
-              onClick={() => setSelectedPlatform(platform.id)}
+              onClick={() => {
+                setSelectedPlatform(platform.id);
+                setInstallStep(0);
+                setDeploymentStatus('idle');
+              }}
             >
               <CardContent className="p-6">
                 <div className="flex flex-col items-center gap-4">
@@ -128,23 +197,27 @@ const UnifiedDeployment = () => {
         </div>
 
         {selectedPlatform && (
-          <Card className="bg-gray-800 border-gray-700">
-            <CardContent className="p-6 space-y-4">
-              <Button 
-                className="w-full bg-gradient-to-r from-blue-500 to-purple-500 hover:opacity-90"
-                onClick={handleDeploy}
-                disabled={deploymentStatus === 'deploying'}
-              >
-                <Download className="h-4 w-4 mr-2" />
-                {deploymentStatus === 'deploying' ? 'Deploying...' : 'Start Mining'}
-              </Button>
+          selectedPlatform === 'android' ? (
+            renderAndroidSetup()
+          ) : (
+            <Card className="bg-gray-800 border-gray-700">
+              <CardContent className="p-6 space-y-4">
+                <Button 
+                  className="w-full bg-gradient-to-r from-blue-500 to-purple-500 hover:opacity-90"
+                  onClick={handleDeploy}
+                  disabled={deploymentStatus === 'deploying'}
+                >
+                  <Download className="h-4 w-4 mr-2" />
+                  {deploymentStatus === 'deploying' ? 'Deploying...' : 'Start Mining'}
+                </Button>
 
-              {renderStatus()}
-            </CardContent>
-          </Card>
+                {renderStatus()}
+              </CardContent>
+            </Card>
+          )
         )}
 
-        {deploymentStatus === 'idle' && (
+        {deploymentStatus === 'idle' && !selectedPlatform && (
           <Alert className="bg-blue-900/50 border-blue-800">
             <Terminal className="h-4 w-4 text-blue-400" />
             <AlertDescription className="text-blue-200">
