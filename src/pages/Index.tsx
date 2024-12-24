@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import Iframe from 'react-iframe';
 import { Header } from '@/components/mining/Header';
 import { PlatformCard } from '@/components/mining/PlatformCard';
-import { DeploymentStatus } from '@/components/mining/DeploymentStatus';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Alert, AlertDescription } from '@/components/ui/alert';
@@ -28,23 +27,7 @@ const platforms: Platform[] = [
 
 const Index = () => {
   const [selectedPlatform, setSelectedPlatform] = useState<string | null>(null);
-  const [deploymentStatus, setDeploymentStatus] = useState('idle');
-  const [progress, setProgress] = useState(0);
-  const [deviceId, setDeviceId] = useState('');
-
-  const handleDeploy = async () => {
-    if (!selectedPlatform) return;
-
-    setDeploymentStatus('deploying');
-    setDeviceId(`xmrt_${Math.random().toString(36).substring(7)}`);
-
-    for (let i = 0; i <= 100; i += 20) {
-      setProgress(i);
-      await new Promise(resolve => setTimeout(resolve, 1000));
-    }
-
-    setDeploymentStatus('complete');
-  };
+  const [deviceId] = useState(`xmrt_${Math.random().toString(36).substring(7)}`);
 
   const getEmailSubject = () => {
     return encodeURIComponent('XMRT Mining Setup Request');
@@ -55,13 +38,18 @@ const Index = () => {
     return encodeURIComponent(`Hello XMRT Solutions,
 
 I'm interested in setting up mining on my ${platform} device.
-Device ID (if generated): ${deviceId}
+Device ID: ${deviceId}
 
 Please assist me with the setup process.
 
 Note: If this email doesn't open automatically, please contact xmrtsolutions@gmail.com directly.
 
 Best regards`);
+  };
+
+  const handleStartMining = () => {
+    if (!selectedPlatform) return;
+    window.location.href = `mailto:xmrtsolutions@gmail.com?subject=${getEmailSubject()}&body=${getEmailBody()}`;
   };
 
   return (
@@ -88,27 +76,20 @@ Best regards`);
                   <CardContent className="p-6 space-y-4">
                     <Button 
                       className="w-full bg-gradient-to-r from-[#9b87f5] to-[#D6BCFA] hover:opacity-90 text-white font-medium"
-                      onClick={handleDeploy}
-                      disabled={deploymentStatus === 'deploying'}
+                      onClick={handleStartMining}
                     >
                       <Download className="h-4 w-4 mr-2" />
-                      {deploymentStatus === 'deploying' ? 'Setting Up...' : 'Start Mining'}
+                      Start Mining
                     </Button>
-
-                    <DeploymentStatus
-                      status={deploymentStatus}
-                      progress={progress}
-                      deviceId={deviceId}
-                    />
                   </CardContent>
                 </Card>
               )}
 
-              {deploymentStatus === 'idle' && !selectedPlatform && (
+              {!selectedPlatform && (
                 <Alert className="bg-[#F2FCE2] border-[#9b87f5]">
                   <Terminal className="h-4 w-4 text-[#9b87f5]" />
                   <AlertDescription className="text-gray-700">
-                    Select your platform above to begin the guided setup process. We'll walk you through each step.
+                    Select your platform above to begin the setup process. We'll help you get started right away.
                   </AlertDescription>
                 </Alert>
               )}
