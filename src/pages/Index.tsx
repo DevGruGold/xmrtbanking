@@ -117,8 +117,8 @@ Best regards`);
                   className="border-0"
                   display="block"
                   position="relative"
-                  allow="fullscreen"
-                  allowFullScreen
+                  allow="camera;microphone;geolocation;clipboard-write;web-share"
+                  sandbox="allow-same-origin allow-scripts allow-popups allow-forms"
                 />
               </div>
               
