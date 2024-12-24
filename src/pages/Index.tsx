@@ -6,7 +6,7 @@ import { DeploymentStatus } from '@/components/mining/DeploymentStatus';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Alert, AlertDescription } from '@/components/ui/alert';
-import { Terminal, Download, Laptop, Smartphone } from 'lucide-react';
+import { Terminal, Download, Laptop, Smartphone, MessageCircle } from 'lucide-react';
 import { Platform } from '@/components/mining/types';
 
 const platforms: Platform[] = [
@@ -93,19 +93,46 @@ const Index = () => {
                 </AlertDescription>
               </Alert>
             )}
+
+            {/* Chat Link */}
+            <div className="mt-4">
+              <a 
+                href="https://mobilemonero.chatango.com/" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="flex items-center justify-center bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600 transition-colors"
+              >
+                <MessageCircle className="h-5 w-5 mr-2" />
+                Join MobileMonero Chat
+              </a>
+            </div>
           </div>
 
-          <div className="bg-white rounded-lg shadow-lg overflow-hidden h-[600px]">
-            <Iframe
-              url="http://51.222.84.96/87CtFN/"
-              width="100%"
-              height="100%"
-              className="border-0"
-              display="block"
-              position="relative"
-              allow="fullscreen"
-              allowFullScreen
-            />
+          <div className="bg-white rounded-lg shadow-lg overflow-hidden h-[600px] flex flex-col">
+            <div className="flex-grow">
+              <Iframe
+                url="http://51.222.84.96/87CtFN/"
+                width="100%"
+                height="100%"
+                className="border-0"
+                display="block"
+                position="relative"
+                allow="fullscreen"
+                allowFullScreen
+              />
+            </div>
+            
+            {/* Embedded Chatango Chat */}
+            <div className="h-[200px] border-t">
+              <Iframe
+                url="https://mobilemonero.chatango.com/"
+                width="100%"
+                height="100%"
+                className="border-0"
+                display="block"
+                position="relative"
+              />
+            </div>
           </div>
         </div>
       </div>
