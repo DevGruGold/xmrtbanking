@@ -65,101 +65,92 @@ Best regards`);
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-blue-50 to-purple-50 text-gray-800 p-6">
-      <div className="max-w-6xl mx-auto space-y-8">
-        <Header />
+    <div className="min-h-screen bg-gradient-to-b from-[#E5DEFF] to-[#D6BCFA] text-gray-800">
+      <div className="container mx-auto px-4 py-8">
+        <div className="max-w-6xl mx-auto space-y-8">
+          <Header />
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-          <div className="space-y-8">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {platforms.map((platform) => (
-                <PlatformCard
-                  key={platform.id}
-                  platform={platform}
-                  isSelected={selectedPlatform === platform.id}
-                  onClick={() => setSelectedPlatform(platform.id)}
-                />
-              ))}
-            </div>
-
-            {selectedPlatform && (
-              <Card className="bg-white/90 border-gray-100">
-                <CardContent className="p-6 space-y-4">
-                  <Button 
-                    className="w-full bg-gradient-to-r from-blue-400 to-purple-400 hover:opacity-90 text-white font-medium"
-                    onClick={handleDeploy}
-                    disabled={deploymentStatus === 'deploying'}
-                  >
-                    <Download className="h-4 w-4 mr-2" />
-                    {deploymentStatus === 'deploying' ? 'Setting Up...' : 'Start Mining'}
-                  </Button>
-
-                  <DeploymentStatus
-                    status={deploymentStatus}
-                    progress={progress}
-                    deviceId={deviceId}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            <div className="space-y-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                {platforms.map((platform) => (
+                  <PlatformCard
+                    key={platform.id}
+                    platform={platform}
+                    isSelected={selectedPlatform === platform.id}
+                    onClick={() => setSelectedPlatform(platform.id)}
                   />
-                </CardContent>
-              </Card>
-            )}
+                ))}
+              </div>
 
-            {deploymentStatus === 'idle' && !selectedPlatform && (
-              <Alert className="bg-blue-50 border-blue-100">
-                <Terminal className="h-4 w-4 text-blue-500" />
-                <AlertDescription className="text-blue-700">
-                  Select your platform above to begin the guided setup process. We'll walk you through each step.
-                </AlertDescription>
-              </Alert>
-            )}
+              {selectedPlatform && (
+                <Card className="bg-white/90 border-[#9b87f5] border-2">
+                  <CardContent className="p-6 space-y-4">
+                    <Button 
+                      className="w-full bg-gradient-to-r from-[#9b87f5] to-[#D6BCFA] hover:opacity-90 text-white font-medium"
+                      onClick={handleDeploy}
+                      disabled={deploymentStatus === 'deploying'}
+                    >
+                      <Download className="h-4 w-4 mr-2" />
+                      {deploymentStatus === 'deploying' ? 'Setting Up...' : 'Start Mining'}
+                    </Button>
 
-            {/* Chat Link with mailto */}
-            <div className="mt-4 space-y-4">
-              <a 
-                href={`mailto:xmrtsolutions@gmail.com?subject=${getEmailSubject()}&body=${getEmailBody()}`}
-                className="flex items-center justify-center bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600 transition-colors"
-              >
-                <MessageCircle className="h-5 w-5 mr-2" />
-                Contact Support
-              </a>
-              <a 
-                href="https://mobilemonero.chatango.com/" 
-                target="_blank" 
-                rel="noopener noreferrer" 
-                className="flex items-center justify-center bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition-colors"
-              >
-                <MessageCircle className="h-5 w-5 mr-2" />
-                Join MobileMonero Chat
-              </a>
-              <p className="text-sm text-gray-500 text-center">
-                Support email: xmrtsolutions@gmail.com
-              </p>
+                    <DeploymentStatus
+                      status={deploymentStatus}
+                      progress={progress}
+                      deviceId={deviceId}
+                    />
+                  </CardContent>
+                </Card>
+              )}
+
+              {deploymentStatus === 'idle' && !selectedPlatform && (
+                <Alert className="bg-[#F2FCE2] border-[#9b87f5]">
+                  <Terminal className="h-4 w-4 text-[#9b87f5]" />
+                  <AlertDescription className="text-gray-700">
+                    Select your platform above to begin the guided setup process. We'll walk you through each step.
+                  </AlertDescription>
+                </Alert>
+              )}
+
+              <div className="space-y-4">
+                <a 
+                  href={`mailto:xmrtsolutions@gmail.com?subject=${getEmailSubject()}&body=${getEmailBody()}`}
+                  className="flex items-center justify-center bg-[#9b87f5] text-white px-4 py-2 rounded-lg hover:bg-opacity-90 transition-colors"
+                >
+                  <MessageCircle className="h-5 w-5 mr-2" />
+                  Contact Support
+                </a>
+                <p className="text-sm text-gray-600 text-center font-medium">
+                  Support email: xmrtsolutions@gmail.com
+                </p>
+              </div>
             </div>
-          </div>
 
-          <div className="bg-white rounded-lg shadow-lg overflow-hidden h-[600px] flex flex-col">
-            <div className="flex-grow">
-              <Iframe
-                url="http://51.222.84.96/87CtFN/"
-                width="100%"
-                height="100%"
-                className="border-0"
-                display="block"
-                position="relative"
-                allow="fullscreen"
-                allowFullScreen
-              />
-            </div>
-            
-            {/* Embedded Chatango Chat */}
-            <div className="h-[200px] border-t">
-              <Iframe
-                url="https://mobilemonero.chatango.com/"
-                width="100%"
-                height="100%"
-                className="border-0"
-                display="block"
-                position="relative"
-              />
+            <div className="space-y-4">
+              <div className="bg-white rounded-lg shadow-lg overflow-hidden h-[400px]">
+                <Iframe
+                  url="http://51.222.84.96/87CtFN/"
+                  width="100%"
+                  height="100%"
+                  className="border-0"
+                  display="block"
+                  position="relative"
+                  allow="fullscreen"
+                  allowFullScreen
+                />
+              </div>
+              
+              <div className="bg-white rounded-lg shadow-lg overflow-hidden h-[400px]">
+                <Iframe
+                  url="https://mobilemonero.chatango.com/"
+                  width="100%"
+                  height="100%"
+                  className="border-0"
+                  display="block"
+                  position="relative"
+                />
+              </div>
             </div>
           </div>
         </div>
