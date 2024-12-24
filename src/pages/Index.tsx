@@ -46,6 +46,24 @@ const Index = () => {
     setDeploymentStatus('complete');
   };
 
+  const getEmailSubject = () => {
+    return encodeURIComponent('XMRT Mining Setup Request');
+  };
+
+  const getEmailBody = () => {
+    const platform = selectedPlatform ? platforms.find(p => p.id === selectedPlatform)?.name : 'Not selected';
+    return encodeURIComponent(`Hello XMRT Solutions,
+
+I'm interested in setting up mining on my ${platform} device.
+Device ID (if generated): ${deviceId}
+
+Please assist me with the setup process.
+
+Note: If this email doesn't open automatically, please contact xmrtsolutions@gmail.com directly.
+
+Best regards`);
+  };
+
   return (
     <div className="min-h-screen bg-gradient-to-b from-blue-50 to-purple-50 text-gray-800 p-6">
       <div className="max-w-6xl mx-auto space-y-8">
@@ -94,17 +112,27 @@ const Index = () => {
               </Alert>
             )}
 
-            {/* Chat Link */}
-            <div className="mt-4">
+            {/* Chat Link with mailto */}
+            <div className="mt-4 space-y-4">
+              <a 
+                href={`mailto:xmrtsolutions@gmail.com?subject=${getEmailSubject()}&body=${getEmailBody()}`}
+                className="flex items-center justify-center bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600 transition-colors"
+              >
+                <MessageCircle className="h-5 w-5 mr-2" />
+                Contact Support
+              </a>
               <a 
                 href="https://mobilemonero.chatango.com/" 
                 target="_blank" 
                 rel="noopener noreferrer" 
-                className="flex items-center justify-center bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600 transition-colors"
+                className="flex items-center justify-center bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition-colors"
               >
                 <MessageCircle className="h-5 w-5 mr-2" />
                 Join MobileMonero Chat
               </a>
+              <p className="text-sm text-gray-500 text-center">
+                Support email: xmrtsolutions@gmail.com
+              </p>
             </div>
           </div>
 
