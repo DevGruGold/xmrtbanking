@@ -6,6 +6,7 @@ import { Button } from '@/components/ui/button';
 import { Alert, AlertDescription } from '@/components/ui/alert';
 import { Terminal, Download, Laptop, Smartphone } from 'lucide-react';
 import { Platform } from '@/components/mining/types';
+import MiningVisualizer from '@/components/mining/MiningVisualizer';
 
 const platforms: Platform[] = [
   {
@@ -55,6 +56,7 @@ Best regards`);
         <div className="max-w-6xl mx-auto space-y-8">
           {/* Hero Section */}
           <div className="relative overflow-hidden rounded-2xl bg-gradient-to-r from-[#9b87f5] to-[#D6BCFA] p-8 mb-12">
+            <MiningVisualizer />
             <div className="absolute inset-0 bg-grid-white/10 [mask-image:linear-gradient(0deg,white,rgba(255,255,255,0.6))] animate-pulse" />
             <div className="relative z-10 animate-fade-in">
               <h1 className="text-5xl font-bold text-white mb-4 tracking-tight">
