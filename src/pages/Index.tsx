@@ -109,20 +109,7 @@ Best regards`);
             </div>
 
             <div className="space-y-4">
-              <div className="bg-white rounded-lg shadow-lg overflow-hidden h-[400px]">
-                <Iframe
-                  url="http://51.222.84.96/87CtFN/"
-                  width="100%"
-                  height="100%"
-                  className="border-0"
-                  display="block"
-                  position="relative"
-                  allow="camera;microphone;geolocation;clipboard-write;web-share"
-                  sandbox="allow-same-origin allow-scripts allow-popups allow-forms"
-                />
-              </div>
-              
-              <div className="bg-white rounded-lg shadow-lg overflow-hidden h-[400px]">
+              <div className="bg-white rounded-lg shadow-lg overflow-hidden h-[800px]">
                 <Iframe
                   url="https://mobilemonero.chatango.com/"
                   width="100%"
