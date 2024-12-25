@@ -1,11 +1,10 @@
 import React, { useState } from 'react';
-import Iframe from 'react-iframe';
 import { Header } from '@/components/mining/Header';
 import { PlatformCard } from '@/components/mining/PlatformCard';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Alert, AlertDescription } from '@/components/ui/alert';
-import { Terminal, Download, Laptop, Smartphone, MessageCircle } from 'lucide-react';
+import { Terminal, Download, Laptop, Smartphone } from 'lucide-react';
 import { Platform } from '@/components/mining/types';
 
 const platforms: Platform[] = [
@@ -42,8 +41,6 @@ Device ID: ${deviceId}
 
 Please assist me with the setup process.
 
-Note: If this email doesn't open automatically, please contact xmrtsolutions@gmail.com directly.
-
 Best regards`);
   };
 
@@ -56,6 +53,21 @@ Best regards`);
     <div className="min-h-screen bg-gradient-to-b from-[#E5DEFF] to-[#D6BCFA] text-gray-800">
       <div className="container mx-auto px-4 py-8">
         <div className="max-w-6xl mx-auto space-y-8">
+          {/* Hero Section */}
+          <div className="relative overflow-hidden rounded-2xl bg-gradient-to-r from-[#9b87f5] to-[#D6BCFA] p-8 mb-12">
+            <div className="absolute inset-0 bg-grid-white/10 [mask-image:linear-gradient(0deg,white,rgba(255,255,255,0.6))] animate-pulse" />
+            <div className="relative z-10 animate-fade-in">
+              <h1 className="text-5xl font-bold text-white mb-4 tracking-tight">
+                Join the Future of Mobile Mining
+              </h1>
+              <p className="text-xl text-white/90 max-w-2xl mx-auto leading-relaxed">
+                Be part of the revolution in cryptocurrency mining. Start mining Monero directly from your mobile device or desktop computer.
+              </p>
+            </div>
+            <div className="absolute -right-20 -bottom-20 w-80 h-80 bg-[#8B5CF6] rounded-full blur-3xl opacity-30 animate-pulse" />
+            <div className="absolute -left-20 -top-20 w-80 h-80 bg-[#D946EF] rounded-full blur-3xl opacity-30 animate-pulse" />
+          </div>
+
           <Header />
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
@@ -93,30 +105,16 @@ Best regards`);
                   </AlertDescription>
                 </Alert>
               )}
-
-              <div className="space-y-4">
-                <a 
-                  href={`mailto:xmrtsolutions@gmail.com?subject=${getEmailSubject()}&body=${getEmailBody()}`}
-                  className="flex items-center justify-center bg-[#9b87f5] text-white px-4 py-2 rounded-lg hover:bg-opacity-90 transition-colors"
-                >
-                  <MessageCircle className="h-5 w-5 mr-2" />
-                  Contact Support
-                </a>
-                <p className="text-sm text-gray-600 text-center font-medium">
-                  Support email: xmrtsolutions@gmail.com
-                </p>
-              </div>
             </div>
 
             <div className="space-y-4">
               <div className="bg-white rounded-lg shadow-lg overflow-hidden h-[800px]">
-                <Iframe
-                  url="https://mobilemonero.chatango.com/"
+                <iframe
+                  src="https://mobilemonero.chatango.com/"
                   width="100%"
                   height="100%"
                   className="border-0"
-                  display="block"
-                  position="relative"
+                  style={{ width: '100%', height: '100%' }}
                 />
               </div>
             </div>
