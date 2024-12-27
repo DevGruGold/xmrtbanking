@@ -55,8 +55,8 @@ Best regards`);
       <div className="container mx-auto px-4 py-8">
         <div className="max-w-6xl mx-auto space-y-8">
           {/* Hero Section */}
-          <div className="relative overflow-hidden rounded-2xl bg-gradient-to-r from-purple-900 to-indigo-900 p-8 mb-12">
-            <div className="w-full h-[300px] mb-6">
+          <div className="relative overflow-hidden rounded-2xl bg-gradient-to-r from-purple-900 to-indigo-900 p-8 mb-6">
+            <div className="w-full mb-4">
               <MiningTicker />
             </div>
             <div className="relative z-10 animate-fade-in">
