@@ -4,26 +4,44 @@ import { Button } from '@/components/ui/button';
 
 const MiningTicker = () => {
   const [earnings, setEarnings] = useState(0);
-  const [poolSize, setPoolSize] = useState<'small' | 'medium' | 'large'>('small');
+  const [poolSize, setPoolSize] = useState<'tiny' | 'small' | 'medium' | 'large' | 'xlarge' | 'massive'>('tiny');
   
   const poolConfigs = {
-    small: {
+    tiny: {
       hashRate: 5000,
       miners: 10,
       xmrPerHashPerDay: 0.000000001,
       animationSpeed: 'animate-[pulse_2s_cubic-bezier(0.4,0,0.6,1)_infinite]'
     },
-    medium: {
+    small: {
       hashRate: 50000,
       miners: 100,
-      xmrPerHashPerDay: 0.0000000012, // 20% bonus for pool size
+      xmrPerHashPerDay: 0.0000000012, // 20% bonus
+      animationSpeed: 'animate-[pulse_1.5s_cubic-bezier(0.4,0,0.6,1)_infinite]'
+    },
+    medium: {
+      hashRate: 500000,
+      miners: 1000,
+      xmrPerHashPerDay: 0.0000000015, // 50% bonus
       animationSpeed: 'animate-[pulse_1s_cubic-bezier(0.4,0,0.6,1)_infinite]'
     },
     large: {
-      hashRate: 500000,
-      miners: 1000,
-      xmrPerHashPerDay: 0.0000000015, // 50% bonus for pool size
+      hashRate: 5000000,
+      miners: 10000,
+      xmrPerHashPerDay: 0.0000000018, // 80% bonus
+      animationSpeed: 'animate-[pulse_0.75s_cubic-bezier(0.4,0,0.6,1)_infinite]'
+    },
+    xlarge: {
+      hashRate: 50000000,
+      miners: 100000,
+      xmrPerHashPerDay: 0.000000002, // 100% bonus
       animationSpeed: 'animate-[pulse_0.5s_cubic-bezier(0.4,0,0.6,1)_infinite]'
+    },
+    massive: {
+      hashRate: 500000000,
+      miners: 1000000,
+      xmrPerHashPerDay: 0.0000000025, // 150% bonus
+      animationSpeed: 'animate-[pulse_0.25s_cubic-bezier(0.4,0,0.6,1)_infinite]'
     }
   };
   
@@ -38,7 +56,7 @@ const MiningTicker = () => {
     return () => clearInterval(timer);
   }, [poolSize]);
 
-  const handlePoolSizeChange = (size: 'small' | 'medium' | 'large') => {
+  const handlePoolSizeChange = (size: 'tiny' | 'small' | 'medium' | 'large' | 'xlarge' | 'massive') => {
     setPoolSize(size);
     setEarnings(0); // Reset earnings when changing pool size
   };
@@ -50,27 +68,48 @@ const MiningTicker = () => {
       <div className="space-y-4">
         <div className="flex justify-between items-center">
           <span className="text-white/80">Pool Size:</span>
-          <div className="flex gap-2">
+          <div className="flex flex-wrap gap-2">
+            <Button 
+              variant={poolSize === 'tiny' ? 'default' : 'secondary'}
+              onClick={() => handlePoolSizeChange('tiny')}
+              className="text-sm"
+            >
+              Tiny (10)
+            </Button>
             <Button 
               variant={poolSize === 'small' ? 'default' : 'secondary'}
               onClick={() => handlePoolSizeChange('small')}
               className="text-sm"
             >
-              Small (10)
+              Small (100)
             </Button>
             <Button 
               variant={poolSize === 'medium' ? 'default' : 'secondary'}
               onClick={() => handlePoolSizeChange('medium')}
               className="text-sm"
             >
-              Medium (100)
+              Medium (1K)
             </Button>
             <Button 
               variant={poolSize === 'large' ? 'default' : 'secondary'}
               onClick={() => handlePoolSizeChange('large')}
               className="text-sm"
             >
-              Large (1000)
+              Large (10K)
+            </Button>
+            <Button 
+              variant={poolSize === 'xlarge' ? 'default' : 'secondary'}
+              onClick={() => handlePoolSizeChange('xlarge')}
+              className="text-sm"
+            >
+              XLarge (100K)
+            </Button>
+            <Button 
+              variant={poolSize === 'massive' ? 'default' : 'secondary'}
+              onClick={() => handlePoolSizeChange('massive')}
+              className="text-sm"
+            >
+              Massive (1M)
             </Button>
           </div>
         </div>
@@ -80,7 +119,7 @@ const MiningTicker = () => {
         </div>
         <div className="flex justify-between items-center">
           <span className="text-white/80">Active Miners:</span>
-          <span className="text-white font-mono">{currentConfig.miners}</span>
+          <span className="text-white font-mono">{currentConfig.miners.toLocaleString()}</span>
         </div>
         <div className="flex justify-between items-center">
           <span className="text-white/80">Estimated XMR:</span>
