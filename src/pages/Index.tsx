@@ -6,7 +6,7 @@ import { Button } from '@/components/ui/button';
 import { Alert, AlertDescription } from '@/components/ui/alert';
 import { Terminal, Download, Laptop, Smartphone } from 'lucide-react';
 import { Platform } from '@/components/mining/types';
-import { MiningTicker } from '@/components/mining/MiningTicker';
+import MiningTicker from '@/components/mining/MiningTicker';
 
 const platforms: Platform[] = [
   {
