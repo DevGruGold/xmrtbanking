@@ -6,6 +6,7 @@ import { Button } from '@/components/ui/button';
 import { Alert, AlertDescription } from '@/components/ui/alert';
 import { Terminal, Download, Laptop, Smartphone } from 'lucide-react';
 import { Platform } from '@/components/mining/types';
+import { MiningTicker } from '@/components/mining/MiningTicker';
 
 const platforms: Platform[] = [
   {
@@ -56,11 +57,7 @@ Best regards`);
           {/* Hero Section */}
           <div className="relative overflow-hidden rounded-2xl bg-gradient-to-r from-[#9b87f5] to-[#D6BCFA] p-8 mb-12">
             <div className="w-full h-[300px] mb-6">
-              <iframe
-                src="https://claude.site/artifacts/48aaf4e7-e6a9-4d11-90bd-970da0b5f956"
-                className="w-full h-full border-0 rounded-lg"
-                title="Mining Timeline Visualization"
-              />
+              <MiningTicker />
             </div>
             <div className="relative z-10 animate-fade-in">
               <h1 className="text-5xl font-bold text-white mb-4 tracking-tight">
