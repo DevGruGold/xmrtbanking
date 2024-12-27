@@ -51,11 +51,11 @@ Best regards`);
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-[#E5DEFF] to-[#D6BCFA] text-gray-800">
+    <div className="min-h-screen bg-black text-white">
       <div className="container mx-auto px-4 py-8">
         <div className="max-w-6xl mx-auto space-y-8">
           {/* Hero Section */}
-          <div className="relative overflow-hidden rounded-2xl bg-gradient-to-r from-[#9b87f5] to-[#D6BCFA] p-8 mb-12">
+          <div className="relative overflow-hidden rounded-2xl bg-gradient-to-r from-purple-900 to-indigo-900 p-8 mb-12">
             <div className="w-full h-[300px] mb-6">
               <MiningTicker />
             </div>
@@ -67,8 +67,8 @@ Best regards`);
                 Be part of the revolution in cryptocurrency mining. Start mining Monero directly from your mobile device or desktop computer.
               </p>
             </div>
-            <div className="absolute -right-20 -bottom-20 w-80 h-80 bg-[#8B5CF6] rounded-full blur-3xl opacity-30 animate-pulse" />
-            <div className="absolute -left-20 -top-20 w-80 h-80 bg-[#D946EF] rounded-full blur-3xl opacity-30 animate-pulse" />
+            <div className="absolute -right-20 -bottom-20 w-80 h-80 bg-purple-600 rounded-full blur-3xl opacity-30 animate-pulse" />
+            <div className="absolute -left-20 -top-20 w-80 h-80 bg-indigo-600 rounded-full blur-3xl opacity-30 animate-pulse" />
           </div>
 
           <Header />
@@ -87,10 +87,10 @@ Best regards`);
               </div>
 
               {selectedPlatform && (
-                <Card className="bg-white/90 border-[#9b87f5] border-2">
+                <Card className="bg-gray-900/90 border-purple-500 border-2">
                   <CardContent className="p-6 space-y-4">
                     <Button 
-                      className="w-full bg-gradient-to-r from-[#9b87f5] to-[#D6BCFA] hover:opacity-90 text-white font-medium"
+                      className="w-full bg-gradient-to-r from-purple-600 to-indigo-600 hover:opacity-90 text-white font-medium"
                       onClick={handleStartMining}
                     >
                       <Download className="h-4 w-4 mr-2" />
@@ -101,9 +101,9 @@ Best regards`);
               )}
 
               {!selectedPlatform && (
-                <Alert className="bg-[#F2FCE2] border-[#9b87f5]">
-                  <Terminal className="h-4 w-4 text-[#9b87f5]" />
-                  <AlertDescription className="text-gray-700">
+                <Alert className="bg-gray-900/80 border-purple-500">
+                  <Terminal className="h-4 w-4 text-purple-500" />
+                  <AlertDescription className="text-gray-300">
                     Select your platform above to begin the setup process. We'll help you get started right away.
                   </AlertDescription>
                 </Alert>
@@ -111,7 +111,7 @@ Best regards`);
             </div>
 
             <div className="space-y-4">
-              <div className="bg-white rounded-lg shadow-lg overflow-hidden h-[800px]">
+              <div className="bg-gray-900 rounded-lg shadow-lg overflow-hidden h-[800px]">
                 <iframe
                   src="https://mobilemonero.chatango.com/"
                   width="100%"
