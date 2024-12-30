@@ -74,6 +74,11 @@ Best regards`);
 
           <Header />
 
+          {/* Tokenization Module */}
+          <div className="w-full max-w-md mx-auto">
+            <TokenizationModule />
+          </div>
+
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
             <div className="space-y-6">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -112,7 +117,6 @@ Best regards`);
             </div>
 
             <div className="space-y-4">
-              <TokenizationModule />
               <div className="bg-gray-900 rounded-lg shadow-lg overflow-hidden h-[600px]">
                 <iframe
                   src="https://mobilemonero.chatango.com/"
