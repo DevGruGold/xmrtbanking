@@ -7,6 +7,7 @@ import { Alert, AlertDescription } from '@/components/ui/alert';
 import { Terminal, Download, Laptop, Smartphone } from 'lucide-react';
 import { Platform } from '@/components/mining/types';
 import MiningTicker from '@/components/mining/MiningTicker';
+import TokenizationModule from '@/components/mining/TokenizationModule';
 
 const platforms: Platform[] = [
   {
@@ -111,7 +112,8 @@ Best regards`);
             </div>
 
             <div className="space-y-4">
-              <div className="bg-gray-900 rounded-lg shadow-lg overflow-hidden h-[800px]">
+              <TokenizationModule />
+              <div className="bg-gray-900 rounded-lg shadow-lg overflow-hidden h-[600px]">
                 <iframe
                   src="https://mobilemonero.chatango.com/"
                   width="100%"
