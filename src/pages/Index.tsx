@@ -61,7 +61,7 @@ Best regards`);
             </div>
             <div className="relative z-10 animate-fade-in">
               <h1 className="text-5xl font-bold text-white mb-4 tracking-tight">
-                Join the Future of Mobile Mining
+                Join the Future of Asset Ownership
               </h1>
               <p className="text-xl text-white/90 max-w-2xl mx-auto leading-relaxed">
                 Be part of the revolution in cryptocurrency mining. Start mining Monero directly from your mobile device or desktop computer.
