@@ -8,37 +8,37 @@ const MiningTicker = () => {
   
   const poolConfigs = {
     tiny: {
-      hashRate: 5000,
+      hashRate: 3000,
       miners: 10,
       xmrPerHashPerDay: 0.000000001,
       animationSpeed: 'animate-[pulse_2s_cubic-bezier(0.4,0,0.6,1)_infinite]'
     },
     small: {
-      hashRate: 50000,
+      hashRate: 30000,
       miners: 100,
       xmrPerHashPerDay: 0.0000000012, // 20% bonus
       animationSpeed: 'animate-[pulse_1.5s_cubic-bezier(0.4,0,0.6,1)_infinite]'
     },
     medium: {
-      hashRate: 500000,
+      hashRate: 300000,
       miners: 1000,
       xmrPerHashPerDay: 0.0000000015, // 50% bonus
       animationSpeed: 'animate-[pulse_1s_cubic-bezier(0.4,0,0.6,1)_infinite]'
     },
     large: {
-      hashRate: 5000000,
+      hashRate: 3000000,
       miners: 10000,
       xmrPerHashPerDay: 0.0000000018, // 80% bonus
       animationSpeed: 'animate-[pulse_0.75s_cubic-bezier(0.4,0,0.6,1)_infinite]'
     },
     xlarge: {
-      hashRate: 50000000,
+      hashRate: 30000000,
       miners: 100000,
       xmrPerHashPerDay: 0.000000002, // 100% bonus
       animationSpeed: 'animate-[pulse_0.5s_cubic-bezier(0.4,0,0.6,1)_infinite]'
     },
     massive: {
-      hashRate: 500000000,
+      hashRate: 300000000,
       miners: 1000000,
       xmrPerHashPerDay: 0.0000000025, // 150% bonus
       animationSpeed: 'animate-[pulse_0.25s_cubic-bezier(0.4,0,0.6,1)_infinite]'
