@@ -57,9 +57,6 @@ Best regards`);
         <div className="max-w-6xl mx-auto space-y-8">
           {/* Hero Section */}
           <div className="relative overflow-hidden rounded-2xl bg-gradient-to-r from-purple-900 to-indigo-900 p-8 mb-6">
-            <div className="w-full mb-4">
-              <MiningTicker />
-            </div>
             <div className="relative z-10 animate-fade-in">
               <h1 className="text-5xl font-bold text-white mb-4 tracking-tight">
                 Own Your Digital Future
@@ -74,11 +71,7 @@ Best regards`);
 
           <Header />
 
-          {/* Tokenization Module */}
-          <div className="w-full max-w-md mx-auto">
-            <TokenizationModule />
-          </div>
-
+          {/* Main Platform Selection */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
             <div className="space-y-6">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -116,7 +109,18 @@ Best regards`);
               )}
             </div>
 
-            <div className="space-y-4">
+            <div className="w-full">
+              <TokenizationModule />
+            </div>
+          </div>
+
+          {/* XMR Trust Mining and Chat Section */}
+          <div className="mt-12 space-y-8">
+            <h2 className="text-2xl font-bold text-center">XMR Trust Mining & Community</h2>
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+              <div className="w-full">
+                <MiningTicker />
+              </div>
               <div className="bg-gray-900 rounded-lg shadow-lg overflow-hidden h-[600px]">
                 <iframe
                   src="https://mobilemonero.chatango.com/"
