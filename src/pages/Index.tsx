@@ -4,25 +4,25 @@ import { PlatformCard } from '@/components/mining/PlatformCard';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Alert, AlertDescription } from '@/components/ui/alert';
-import { Terminal, Download, Laptop, Smartphone } from 'lucide-react';
+import { Terminal, Wallet, Coins } from 'lucide-react';
 import { Platform } from '@/components/mining/types';
 import MiningTicker from '@/components/mining/MiningTicker';
 import TokenizationModule from '@/components/mining/TokenizationModule';
 
 const platforms: Platform[] = [
   {
-    id: 'android',
-    name: 'Android',
-    icon: Smartphone,
-    hashrate: '300-500 H/s',
-    requirements: ['Termux from F-Droid', 'Android 7.0+']
+    id: 'contracts',
+    name: 'Smart Contracts',
+    icon: Terminal,
+    hashrate: 'Automated',
+    requirements: ['MetaMask Wallet', 'ETH for gas']
   },
   {
-    id: 'windows',
-    name: 'Windows',
-    icon: Laptop,
-    hashrate: '500-900 H/s',
-    requirements: ['Windows 10/11', '4GB+ RAM']
+    id: 'payments',
+    name: 'Payment Systems',
+    icon: Wallet,
+    hashrate: 'Instant',
+    requirements: ['XMRT Account', 'KYC Verification']
   }
 ];
 
@@ -31,22 +31,22 @@ const Index = () => {
   const [deviceId] = useState(`xmrt_${Math.random().toString(36).substring(7)}`);
 
   const getEmailSubject = () => {
-    return encodeURIComponent('XMRT Mining Setup Request');
+    return encodeURIComponent('XMRT Platform Access Request');
   };
 
   const getEmailBody = () => {
     const platform = selectedPlatform ? platforms.find(p => p.id === selectedPlatform)?.name : 'Not selected';
     return encodeURIComponent(`Hello XMRT Solutions,
 
-I'm interested in setting up mining on my ${platform} device.
-Device ID: ${deviceId}
+I'm interested in accessing the ${platform} platform.
+Account ID: ${deviceId}
 
 Please assist me with the setup process.
 
 Best regards`);
   };
 
-  const handleStartMining = () => {
+  const handleStartProcess = () => {
     if (!selectedPlatform) return;
     window.location.href = `mailto:xmrtsolutions@gmail.com?subject=${getEmailSubject()}&body=${getEmailBody()}`;
   };
@@ -62,10 +62,10 @@ Best regards`);
             </div>
             <div className="relative z-10 animate-fade-in">
               <h1 className="text-5xl font-bold text-white mb-4 tracking-tight">
-                Join the Future of Asset Ownership
+                Own Your Digital Future
               </h1>
               <p className="text-xl text-white/90 max-w-2xl mx-auto leading-relaxed">
-                Be part of the revolution in cryptocurrency mining. Start mining Monero directly from your mobile device or desktop computer.
+                Create, tokenize, and manage your digital assets with XMRT's comprehensive suite of blockchain solutions.
               </p>
             </div>
             <div className="absolute -right-20 -bottom-20 w-80 h-80 bg-purple-600 rounded-full blur-3xl opacity-30 animate-pulse" />
@@ -97,10 +97,10 @@ Best regards`);
                   <CardContent className="p-6 space-y-4">
                     <Button 
                       className="w-full bg-gradient-to-r from-purple-600 to-indigo-600 hover:opacity-90 text-white font-medium"
-                      onClick={handleStartMining}
+                      onClick={handleStartProcess}
                     >
-                      <Download className="h-4 w-4 mr-2" />
-                      Start Mining
+                      <Coins className="h-4 w-4 mr-2" />
+                      Get Started
                     </Button>
                   </CardContent>
                 </Card>
@@ -110,7 +110,7 @@ Best regards`);
                 <Alert className="bg-gray-900/80 border-purple-500">
                   <Terminal className="h-4 w-4 text-purple-500" />
                   <AlertDescription className="text-gray-300">
-                    Select your platform above to begin the setup process. We'll help you get started right away.
+                    Select a platform above to begin your journey into digital asset ownership with XMRT Solutions.
                   </AlertDescription>
                 </Alert>
               )}
