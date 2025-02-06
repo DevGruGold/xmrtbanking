@@ -4,25 +4,25 @@ import { PlatformCard } from '@/components/mining/PlatformCard';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Alert, AlertDescription } from '@/components/ui/alert';
-import { Terminal, Wallet, Coins } from 'lucide-react';
+import { Terminal, Smartphone, Monitor } from 'lucide-react';
 import { Platform } from '@/components/mining/types';
 import MiningTicker from '@/components/mining/MiningTicker';
 import TokenizationModule from '@/components/mining/TokenizationModule';
 
 const platforms: Platform[] = [
   {
-    id: 'contracts',
-    name: 'Smart Contracts',
-    icon: Terminal,
-    hashrate: 'Automated',
-    requirements: ['MetaMask Wallet', 'ETH for gas']
+    id: 'mobile',
+    name: 'MobileMonero (XMRig) Mobile',
+    icon: Smartphone,
+    hashrate: 'Optimized for Mobile',
+    requirements: ['Android 7.0+', '2GB RAM', 'ARM processor']
   },
   {
-    id: 'payments',
-    name: 'Payment Systems',
-    icon: Wallet,
-    hashrate: 'Instant',
-    requirements: ['XMRT Account', 'KYC Verification']
+    id: 'pc',
+    name: 'MobileMonero (XMRig) PC',
+    icon: Monitor,
+    hashrate: 'Full Desktop Performance',
+    requirements: ['Windows/Linux/MacOS', '4GB RAM', 'x86-64 processor']
   }
 ];
 
@@ -31,17 +31,17 @@ const Index = () => {
   const [deviceId] = useState(`xmrt_${Math.random().toString(36).substring(7)}`);
 
   const getEmailSubject = () => {
-    return encodeURIComponent('XMRT Platform Access Request');
+    return encodeURIComponent('MobileMonero (XMRig) Download Request');
   };
 
   const getEmailBody = () => {
     const platform = selectedPlatform ? platforms.find(p => p.id === selectedPlatform)?.name : 'Not selected';
-    return encodeURIComponent(`Hello XMRT Solutions,
+    return encodeURIComponent(`Hello MobileMonero Team,
 
-I'm interested in accessing the ${platform} platform.
-Account ID: ${deviceId}
+I would like to download ${platform}.
+Device ID: ${deviceId}
 
-Please assist me with the setup process.
+Please send me the download link.
 
 Best regards`);
   };
@@ -92,8 +92,8 @@ Best regards`);
                       className="w-full bg-gradient-to-r from-purple-600 to-indigo-600 hover:opacity-90 text-white font-medium"
                       onClick={handleStartProcess}
                     >
-                      <Coins className="h-4 w-4 mr-2" />
-                      Get Started
+                      <Terminal className="h-4 w-4 mr-2" />
+                      Download Now
                     </Button>
                   </CardContent>
                 </Card>
@@ -103,7 +103,7 @@ Best regards`);
                 <Alert className="bg-gray-900/80 border-purple-500">
                   <Terminal className="h-4 w-4 text-purple-500" />
                   <AlertDescription className="text-gray-300">
-                    Select a platform above to begin your journey into digital asset ownership with XMRT Solutions.
+                    Select a platform above to download MobileMonero (XMRig) for your device.
                   </AlertDescription>
                 </Alert>
               )}
