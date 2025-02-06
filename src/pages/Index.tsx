@@ -28,27 +28,15 @@ const platforms: Platform[] = [
 
 const Index = () => {
   const [selectedPlatform, setSelectedPlatform] = useState<string | null>(null);
-  const [deviceId] = useState(`xmrt_${Math.random().toString(36).substring(7)}`);
-
-  const getEmailSubject = () => {
-    return encodeURIComponent('MobileMonero (XMRig) Download Request');
-  };
-
-  const getEmailBody = () => {
-    const platform = selectedPlatform ? platforms.find(p => p.id === selectedPlatform)?.name : 'Not selected';
-    return encodeURIComponent(`Hello MobileMonero Team,
-
-I would like to download ${platform}.
-Device ID: ${deviceId}
-
-Please send me the download link.
-
-Best regards`);
-  };
 
   const handleStartProcess = () => {
     if (!selectedPlatform) return;
-    window.location.href = `mailto:xmrtsolutions@gmail.com?subject=${getEmailSubject()}&body=${getEmailBody()}`;
+    
+    if (selectedPlatform === 'mobile') {
+      window.location.href = 'https://mobilemonero.com';
+    } else if (selectedPlatform === 'pc') {
+      window.location.href = 'https://xmrig.com/download';
+    }
   };
 
   return (
@@ -70,6 +58,17 @@ Best regards`);
           </div>
 
           <Header />
+
+          {/* Asset Tokenization Section */}
+          <div className="w-full max-w-md mx-auto mb-8">
+            <TokenizationModule />
+            <Button 
+              className="w-full mt-4 bg-gray-800 text-gray-300 hover:bg-gray-700 cursor-not-allowed"
+              disabled
+            >
+              Coming Soon
+            </Button>
+          </div>
 
           {/* Main Platform Selection */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
@@ -107,10 +106,6 @@ Best regards`);
                   </AlertDescription>
                 </Alert>
               )}
-            </div>
-
-            <div className="w-full">
-              <TokenizationModule />
             </div>
           </div>
 
