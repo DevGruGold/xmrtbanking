@@ -57,22 +57,11 @@ const Index = () => {
             <div className="absolute -left-20 -top-20 w-80 h-80 bg-indigo-600 rounded-full blur-3xl opacity-30 animate-pulse" />
           </div>
 
-          {/* XMR Trust Mining and Chat Section */}
+          {/* XMR Trust Mining Header & Ticker */}
           <div className="space-y-8">
             <h2 className="text-2xl font-bold text-center">XMR Trust Mining & Community</h2>
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-              <div className="w-full">
-                <MiningTicker />
-              </div>
-              <div className="bg-gray-900 rounded-lg shadow-lg overflow-hidden h-[600px]">
-                <iframe
-                  src="https://mobilemonero.chatango.com/"
-                  width="100%"
-                  height="100%"
-                  className="border-0"
-                  style={{ width: '100%', height: '100%' }}
-                />
-              </div>
+            <div className="w-full">
+              <MiningTicker />
             </div>
           </div>
 
@@ -113,6 +102,17 @@ const Index = () => {
                 </Alert>
               )}
             </div>
+          </div>
+
+          {/* Chat Room Section */}
+          <div className="bg-gray-900 rounded-lg shadow-lg overflow-hidden h-[600px]">
+            <iframe
+              src="https://mobilemonero.chatango.com/"
+              width="100%"
+              height="100%"
+              className="border-0"
+              style={{ width: '100%', height: '100%' }}
+            />
           </div>
 
           <Header />
