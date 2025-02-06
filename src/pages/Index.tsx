@@ -57,19 +57,6 @@ const Index = () => {
             <div className="absolute -left-20 -top-20 w-80 h-80 bg-indigo-600 rounded-full blur-3xl opacity-30 animate-pulse" />
           </div>
 
-          <Header />
-
-          {/* Asset Tokenization Section */}
-          <div className="w-full max-w-md mx-auto mb-8">
-            <TokenizationModule />
-            <Button 
-              className="w-full mt-4 bg-gray-800 text-gray-300 hover:bg-gray-700 cursor-not-allowed"
-              disabled
-            >
-              Coming Soon
-            </Button>
-          </div>
-
           {/* Main Platform Selection */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
             <div className="space-y-6">
@@ -107,6 +94,19 @@ const Index = () => {
                 </Alert>
               )}
             </div>
+          </div>
+
+          <Header />
+
+          {/* Asset Tokenization Section */}
+          <div className="w-full max-w-md mx-auto mb-8">
+            <TokenizationModule />
+            <Button 
+              className="w-full mt-4 bg-gray-800 text-gray-300 hover:bg-gray-700 cursor-not-allowed"
+              disabled
+            >
+              Coming Soon
+            </Button>
           </div>
 
           {/* XMR Trust Mining and Chat Section */}
