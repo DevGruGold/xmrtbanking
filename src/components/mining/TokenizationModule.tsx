@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { ethers } from 'ethers';
 import { Button } from '@/components/ui/button';
@@ -9,10 +8,10 @@ import { Loader2, CheckCircle, Copy, ExternalLink, Upload } from 'lucide-react';
 import { Textarea } from '@/components/ui/textarea';
 import { Label } from '@/components/ui/label';
 import { Popover, PopoverTrigger, PopoverContent } from '@/components/ui/popover';
+import { useWeb3Modal } from '@web3modal/react';
+import { useAccount, useConnect, useDisconnect } from '@web3modal/ethereum';
 
 const TokenizationModule = () => {
-  const [account, setAccount] = useState<string | null>(null);
-  const [isConnecting, setIsConnecting] = useState(false);
   const [step, setStep] = useState(0);
   const [isProcessing, setIsProcessing] = useState(false);
   const [tokenName, setTokenName] = useState('');
@@ -23,52 +22,12 @@ const TokenizationModule = () => {
   const [tokenAddress, setTokenAddress] = useState('');
   const [isCopied, setIsCopied] = useState(false);
   const { toast } = useToast();
-
-  useEffect(() => {
-    // Check if MetaMask is already connected
-    checkConnection();
-  }, []);
-
-  const checkConnection = async () => {
-    if (typeof window.ethereum !== 'undefined') {
-      try {
-        const accounts = await window.ethereum.request({ method: 'eth_accounts' });
-        if (accounts.length > 0) {
-          setAccount(accounts[0]);
-        }
-      } catch (error) {
-        console.error('Error checking connection:', error);
-      }
-    }
-  };
-
-  const connectWallet = async () => {
-    if (typeof window.ethereum !== 'undefined') {
-      try {
-        setIsConnecting(true);
-        const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
-        setAccount(accounts[0]);
-        toast({
-          title: 'Wallet Connected',
-          description: 'Successfully connected to MetaMask wallet.',
-        });
-      } catch (error) {
-        toast({
-          title: 'Connection Failed',
-          description: 'Failed to connect to MetaMask wallet.',
-          variant: 'destructive',
-        });
-      } finally {
-        setIsConnecting(false);
-      }
-    } else {
-      toast({
-        title: 'MetaMask Not Found',
-        description: 'Please install MetaMask to use this feature.',
-        variant: 'destructive',
-      });
-    }
-  };
+  
+  // Web3Modal hooks
+  const { open } = useWeb3Modal();
+  const { address, isConnected } = useAccount();
+  const { connect } = useConnect();
+  const { disconnect } = useDisconnect();
 
   const handleFileUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files[0]) {
@@ -111,7 +70,7 @@ const TokenizationModule = () => {
   };
 
   const createToken = async () => {
-    if (!account || !validateForm()) return;
+    if (!address || !validateForm()) return;
 
     try {
       setIsProcessing(true);
@@ -193,6 +152,24 @@ const TokenizationModule = () => {
     setTokenDescription('');
     setAssetUrl('');
     setTokenAddress('');
+  };
+
+  const connectWallet = async () => {
+    try {
+      await open();
+      if (isConnected) {
+        toast({
+          title: 'Wallet Connected',
+          description: 'Successfully connected to wallet.',
+        });
+      }
+    } catch (error) {
+      toast({
+        title: 'Connection Failed',
+        description: 'Failed to connect wallet.',
+        variant: 'destructive',
+      });
+    }
   };
 
   const renderStep0 = () => (
@@ -404,7 +381,7 @@ const TokenizationModule = () => {
     </div>
   );
 
-  if (!account) {
+  if (!isConnected) {
     return (
       <Card className="w-full max-w-md mx-auto bg-gray-900/90 border-purple-500">
         <CardHeader>
@@ -417,16 +394,8 @@ const TokenizationModule = () => {
           <Button
             onClick={connectWallet}
             className="w-full bg-gradient-to-r from-purple-600 to-indigo-600"
-            disabled={isConnecting}
           >
-            {isConnecting ? (
-              <>
-                <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                Connecting...
-              </>
-            ) : (
-              'Connect MetaMask'
-            )}
+            Connect Wallet
           </Button>
         </CardContent>
       </Card>
@@ -440,7 +409,15 @@ const TokenizationModule = () => {
       </CardHeader>
       <CardContent className="space-y-4">
         <div className="text-sm text-white text-center mb-2">
-          Connected: {account.slice(0, 6)}...{account.slice(-4)}
+          Connected: {address?.slice(0, 6)}...{address?.slice(-4)}
+          <Button 
+            variant="ghost" 
+            size="sm" 
+            onClick={() => disconnect()} 
+            className="ml-2 text-xs text-gray-400 hover:text-white"
+          >
+            Disconnect
+          </Button>
         </div>
         
         {step === 0 && renderStep0()}
@@ -452,4 +429,3 @@ const TokenizationModule = () => {
 };
 
 export default TokenizationModule;
-

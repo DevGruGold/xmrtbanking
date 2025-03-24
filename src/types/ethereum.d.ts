@@ -1,3 +1,4 @@
+
 interface Window {
   ethereum?: {
     request: (args: { method: string; params?: any[] }) => Promise<any>;
@@ -6,3 +7,7 @@ interface Window {
     isMetaMask?: boolean;
   };
 }
+
+// Add Web3Modal types
+declare module '@web3modal/ethereum';
+declare module '@web3modal/react';
