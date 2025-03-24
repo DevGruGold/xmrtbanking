@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { Header } from '@/components/mining/Header';
 import { PlatformCard } from '@/components/mining/PlatformCard';
@@ -120,12 +121,6 @@ const Index = () => {
           {/* Asset Tokenization Section */}
           <div className="w-full max-w-md mx-auto mb-8">
             <TokenizationModule />
-            <Button 
-              className="w-full mt-4 bg-gray-800 text-gray-300 hover:bg-gray-700 cursor-not-allowed"
-              disabled
-            >
-              Coming Soon
-            </Button>
           </div>
         </div>
       </div>
