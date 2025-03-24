@@ -24,7 +24,7 @@ const App = () => (
         </BrowserRouter>
       </TooltipProvider>
     </WagmiConfig>
-    <Web3Modal projectId={web3ModalConfig.projectId} ethereumClient={web3ModalConfig.ethereum} />
+    <Web3Modal projectId={web3ModalConfig.projectId} ethereumClient={config.autoConnect} />
   </QueryClientProvider>
 );
 

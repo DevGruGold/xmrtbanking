@@ -1,6 +1,7 @@
 
 import { configureChains, createConfig } from '@web3modal/ethereum'
 import { mainnet, sepolia } from '@web3modal/ethereum'
+import { publicProvider } from '@web3modal/ethereum'
 
 // Configure chains & providers
 export const { publicClient, webSocketPublicClient } = configureChains(
@@ -20,7 +21,7 @@ export const config = createConfig({
 
 // Create Web3Modal configuration
 export const web3ModalConfig = {
-  projectId: 'YOUR_PROJECT_ID', // This would be replaced by the actual env variable
+  projectId: '6054bd6688c6860ed806775db1c24f15', // Using the provided project ID
   theme: 'dark',
   accentColor: 'purple',
   ethereum: {
