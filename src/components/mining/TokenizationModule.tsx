@@ -408,10 +408,10 @@ const TokenizationModule = () => {
     return (
       <Card className="w-full max-w-md mx-auto bg-gray-900/90 border-purple-500">
         <CardHeader>
-          <CardTitle className="text-2xl font-bold text-center">Asset Tokenization</CardTitle>
+          <CardTitle className="text-2xl font-bold text-center text-white">Asset Tokenization</CardTitle>
         </CardHeader>
         <CardContent className="space-y-4">
-          <p className="text-gray-400 text-sm text-center mb-4">
+          <p className="text-white text-sm text-center mb-4">
             Connect your wallet to create and manage tokenized digital assets on the blockchain.
           </p>
           <Button
@@ -436,10 +436,10 @@ const TokenizationModule = () => {
   return (
     <Card className="w-full max-w-md mx-auto bg-gray-900/90 border-purple-500">
       <CardHeader>
-        <CardTitle className="text-2xl font-bold text-center">Asset Tokenization</CardTitle>
+        <CardTitle className="text-2xl font-bold text-center text-white">Asset Tokenization</CardTitle>
       </CardHeader>
       <CardContent className="space-y-4">
-        <div className="text-sm text-gray-400 text-center mb-2">
+        <div className="text-sm text-white text-center mb-2">
           Connected: {account.slice(0, 6)}...{account.slice(-4)}
         </div>
         
@@ -449,6 +449,221 @@ const TokenizationModule = () => {
       </CardContent>
     </Card>
   );
+
+  function renderStep0() {
+    return (
+      <div className="space-y-4">
+        <div className="space-y-2">
+          <Label htmlFor="tokenName" className="text-white">Token Name</Label>
+          <Input
+            id="tokenName"
+            placeholder="e.g. My Digital Asset Token"
+            value={tokenName}
+            onChange={(e) => setTokenName(e.target.value)}
+            className="bg-gray-800 border-gray-700 text-white"
+          />
+        </div>
+        <div className="space-y-2">
+          <Label htmlFor="tokenSymbol" className="text-white">Token Symbol</Label>
+          <Input
+            id="tokenSymbol"
+            placeholder="e.g. MDAT (3-5 characters)"
+            value={tokenSymbol}
+            onChange={(e) => setTokenSymbol(e.target.value.toUpperCase().slice(0, 5))}
+            className="bg-gray-800 border-gray-700 text-white"
+          />
+        </div>
+        <div className="space-y-2">
+          <Label htmlFor="tokenSupply" className="text-white">Initial Supply</Label>
+          <Input
+            id="tokenSupply"
+            type="number"
+            placeholder="e.g. 1000000"
+            value={tokenSupply}
+            onChange={(e) => setTokenSupply(e.target.value)}
+            className="bg-gray-800 border-gray-700 text-white"
+          />
+        </div>
+        <div className="space-y-2">
+          <Label htmlFor="tokenDescription" className="text-white">Description (Optional)</Label>
+          <Textarea
+            id="tokenDescription"
+            placeholder="Describe your token and its purpose"
+            value={tokenDescription}
+            onChange={(e) => setTokenDescription(e.target.value)}
+            className="bg-gray-800 border-gray-700 text-white"
+          />
+        </div>
+        <Button
+          onClick={createToken}
+          className="w-full bg-gradient-to-r from-purple-600 to-indigo-600"
+          disabled={isProcessing || !tokenName || !tokenSymbol}
+        >
+          {isProcessing ? (
+            <>
+              <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+              Creating Token...
+            </>
+          ) : (
+            'Create Token'
+          )}
+        </Button>
+      </div>
+    );
+  }
+
+  function renderStep1() {
+    return (
+      <div className="space-y-4">
+        <div className="p-4 border border-green-500 rounded-lg bg-green-500/10 flex items-center space-x-2">
+          <CheckCircle className="h-5 w-5 text-green-500" />
+          <p className="text-green-400">Token created successfully!</p>
+        </div>
+        
+        <div className="space-y-2">
+          <Label className="text-white">Token Address</Label>
+          <div className="flex">
+            <Input
+              value={tokenAddress}
+              readOnly
+              className="bg-gray-800 border-gray-700 rounded-r-none text-white"
+            />
+            <Button
+              onClick={copyToClipboard}
+              className="rounded-l-none"
+              variant="outline"
+            >
+              {isCopied ? <CheckCircle className="h-4 w-4 text-green-500" /> : <Copy className="h-4 w-4" />}
+            </Button>
+          </div>
+        </div>
+        
+        <div className="space-y-2">
+          <Label className="text-white">Upload Asset to Tokenize</Label>
+          <div className="flex items-center justify-center border-2 border-dashed border-gray-700 bg-gray-800 p-4 rounded-lg">
+            <label className="flex flex-col items-center justify-center w-full cursor-pointer">
+              <Upload className="h-10 w-10 text-gray-500 mb-2" />
+              <span className="text-sm text-gray-300">Click to upload or drag and drop</span>
+              <span className="text-xs text-gray-400">PNG, JPG, PDF, MP3, MP4 (max 100MB)</span>
+              <input 
+                type="file" 
+                className="hidden" 
+                onChange={handleFileUpload} 
+              />
+            </label>
+          </div>
+        </div>
+        
+        {assetUrl && (
+          <div className="space-y-2">
+            <Label className="text-white">Asset URL</Label>
+            <Input
+              value={assetUrl}
+              readOnly
+              className="bg-gray-800 border-gray-700 text-white"
+            />
+          </div>
+        )}
+        
+        <Button
+          onClick={handleAssetTokenization}
+          className="w-full bg-gradient-to-r from-purple-600 to-indigo-600"
+          disabled={isProcessing || !assetUrl}
+        >
+          {isProcessing ? (
+            <>
+              <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+              Tokenizing Asset...
+            </>
+          ) : (
+            'Tokenize Asset'
+          )}
+        </Button>
+      </div>
+    );
+  }
+
+  function renderStep2() {
+    return (
+      <div className="space-y-4">
+        <div className="p-4 border border-green-500 rounded-lg bg-green-500/10 text-center">
+          <CheckCircle className="h-8 w-8 text-green-500 mx-auto mb-2" />
+          <h3 className="text-lg font-medium text-green-400">Asset Successfully Tokenized!</h3>
+          <p className="text-sm text-gray-300">Your digital asset is now tokenized on the blockchain</p>
+        </div>
+        
+        <div className="space-y-2">
+          <Label className="text-white">Token Details</Label>
+          <div className="bg-gray-800 border border-gray-700 rounded-lg p-4 space-y-2">
+            <div className="flex justify-between">
+              <span className="text-gray-300">Name:</span>
+              <span className="text-white">{tokenName}</span>
+            </div>
+            <div className="flex justify-between">
+              <span className="text-gray-300">Symbol:</span>
+              <span className="text-white">{tokenSymbol}</span>
+            </div>
+            <div className="flex justify-between">
+              <span className="text-gray-300">Supply:</span>
+              <span className="text-white">{tokenSupply}</span>
+            </div>
+            <div className="flex justify-between">
+              <span className="text-gray-300">Address:</span>
+              <div className="flex items-center">
+                <span className="text-xs truncate max-w-[120px] text-white">{tokenAddress}</span>
+                <Button 
+                  variant="ghost" 
+                  size="sm" 
+                  className="ml-1 h-6 w-6 p-0" 
+                  onClick={copyToClipboard}
+                >
+                  <Copy className="h-3 w-3" />
+                </Button>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div className="flex space-x-2">
+          <Button
+            onClick={() => window.open(`https://etherscan.io/token/${tokenAddress}`, '_blank')}
+            className="flex-1 bg-gray-800 hover:bg-gray-700 text-white"
+          >
+            <ExternalLink className="h-4 w-4 mr-2" />
+            View on Explorer
+          </Button>
+          
+          <Popover>
+            <PopoverTrigger asChild>
+              <Button className="flex-1 bg-gradient-to-r from-purple-600 to-indigo-600">
+                Manage Token
+              </Button>
+            </PopoverTrigger>
+            <PopoverContent className="w-80 bg-gray-900 border-gray-700">
+              <div className="space-y-2">
+                <h4 className="font-medium text-center text-white">Token Management</h4>
+                <p className="text-xs text-gray-300 text-center">Additional management features will be available in the full version.</p>
+                <div className="grid grid-cols-2 gap-2">
+                  <Button variant="outline" className="text-xs h-8 text-gray-300" disabled>Transfer</Button>
+                  <Button variant="outline" className="text-xs h-8 text-gray-300" disabled>Mint</Button>
+                  <Button variant="outline" className="text-xs h-8 text-gray-300" disabled>Burn</Button>
+                  <Button variant="outline" className="text-xs h-8 text-gray-300" disabled>Trade</Button>
+                </div>
+              </div>
+            </PopoverContent>
+          </Popover>
+        </div>
+        
+        <Button
+          onClick={resetProcess}
+          variant="outline"
+          className="w-full border-purple-600 text-purple-400 hover:bg-purple-900/20"
+        >
+          Create Another Token
+        </Button>
+      </div>
+    );
+  }
 };
 
 export default TokenizationModule;
