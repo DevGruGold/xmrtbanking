@@ -1,10 +1,10 @@
 import { defaultWagmiConfig } from '@web3modal/wagmi/react/config'
 import { mainnet, sepolia } from 'wagmi/chains'
 
-// 1. Get projectId from environment or use provided one
+// Get projectId
 const projectId = '6054bd6688c6860ed806775db1c24f15'
 
-// 2. Create wagmiConfig
+// Create wagmiConfig
 const metadata = {
   name: 'MobileMonero by XMRT Solutions',
   description: 'The premier mobile Monero mining solution',
@@ -16,4 +16,8 @@ export const config = defaultWagmiConfig({
   chains: [mainnet, sepolia],
   projectId,
   metadata,
+  enableWalletConnect: true,
+  enableInjected: true,
+  enableEIP6963: true,
+  enableCoinbase: true,
 })
