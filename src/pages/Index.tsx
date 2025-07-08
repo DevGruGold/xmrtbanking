@@ -8,7 +8,7 @@ import { Alert, AlertDescription } from '@/components/ui/alert';
 import { Terminal, Smartphone, Monitor } from 'lucide-react';
 import { Platform } from '@/components/mining/types';
 import MiningTicker from '@/components/mining/MiningTicker';
-import TokenizationModule from '@/components/mining/TokenizationModule';
+
 
 const platforms: Platform[] = [
   {
@@ -144,11 +144,6 @@ const Index = () => {
           </div>
 
           <Header />
-
-          {/* Asset Tokenization Section */}
-          <div className="w-full max-w-md mx-auto mb-8">
-            <TokenizationModule />
-          </div>
         </div>
       </div>
     </div>
