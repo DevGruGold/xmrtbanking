@@ -48,19 +48,40 @@ const Index = () => {
           <div className="relative overflow-hidden rounded-2xl bg-gradient-to-r from-purple-900 to-indigo-900 p-8 mb-6">
             <div className="relative z-10 animate-fade-in">
               <h1 className="text-5xl font-bold text-white mb-4 tracking-tight">
-                Own Your Digital Future
+                Mine Monero on Mobile
               </h1>
               <p className="text-xl text-white/90 max-w-2xl mx-auto leading-relaxed">
-                Create, tokenize, and manage your digital assets with XMRT's comprehensive suite of blockchain solutions.
+                Experience the power of MobileMonero - the premier mobile XMR mining solution by XMRT Solutions. Start mining cryptocurrency directly on your Android device.
               </p>
+              <div className="mt-6 flex flex-col sm:flex-row gap-4 justify-center">
+                <Button 
+                  size="lg"
+                  className="bg-white text-purple-900 hover:bg-white/90 font-semibold"
+                  onClick={() => window.open('https://mobilemonero.com', '_blank')}
+                >
+                  <Smartphone className="h-5 w-5 mr-2" />
+                  Download MobileMonero
+                </Button>
+                <Button 
+                  size="lg"
+                  variant="outline"
+                  className="border-white text-white hover:bg-white/10"
+                  onClick={() => window.open('https://xmrt.io', '_blank')}
+                >
+                  Learn More at XMRT.io
+                </Button>
+              </div>
             </div>
             <div className="absolute -right-20 -bottom-20 w-80 h-80 bg-purple-600 rounded-full blur-3xl opacity-30 animate-pulse" />
             <div className="absolute -left-20 -top-20 w-80 h-80 bg-indigo-600 rounded-full blur-3xl opacity-30 animate-pulse" />
           </div>
 
-          {/* XMR Trust Mining Header & Ticker */}
+          {/* MobileMonero Community & Stats */}
           <div className="space-y-8">
-            <h2 className="text-2xl font-bold text-center">XMR Trust Mining & Community</h2>
+            <div className="text-center space-y-2">
+              <h2 className="text-2xl font-bold">MobileMonero Community Stats</h2>
+              <p className="text-gray-400">Real-time mining statistics from the MobileMonero network</p>
+            </div>
             <div className="w-full">
               <MiningTicker />
             </div>
@@ -81,15 +102,21 @@ const Index = () => {
               </div>
 
               {selectedPlatform && (
-                <Card className="bg-gray-900/90 border-purple-500 border-2">
+                  <Card className="bg-gray-900/90 border-purple-500 border-2">
                   <CardContent className="p-6 space-y-4">
+                    <div className="text-center mb-4">
+                      <p className="text-sm text-purple-400 font-medium">Official MobileMonero Distribution</p>
+                    </div>
                     <Button 
                       className="w-full bg-gradient-to-r from-purple-600 to-indigo-600 hover:opacity-90 text-white font-medium"
                       onClick={handleStartProcess}
                     >
                       <Terminal className="h-4 w-4 mr-2" />
-                      Download Now
+                      Download MobileMonero
                     </Button>
+                    <p className="text-xs text-gray-400 text-center">
+                      Powered by XMRT Solutions • Visit XMRT.io
+                    </p>
                   </CardContent>
                 </Card>
               )}
@@ -98,7 +125,7 @@ const Index = () => {
                 <Alert className="bg-gray-900/80 border-purple-500">
                   <Terminal className="h-4 w-4 text-purple-500" />
                   <AlertDescription className="text-gray-300">
-                    Select a platform above to download MobileMonero (XMRig) for your device.
+                    Select a platform above to download the official MobileMonero mining app. Start earning XMR on your device today!
                   </AlertDescription>
                 </Alert>
               )}

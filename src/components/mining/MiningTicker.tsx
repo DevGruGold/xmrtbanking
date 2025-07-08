@@ -6,7 +6,7 @@ const MiningTicker = () => {
   const poolConfig = {
     hashRate: 30000000,
     miners: 100000,
-    xmrPerHashPerDay: 0.000000002, // 100% bonus
+    xmrPerHashPerDay: 0.000000002, // MobileMonero optimized rates
     animationSpeed: 'animate-[pulse_0.5s_cubic-bezier(0.4,0,0.6,1)_infinite]'
   };
   
@@ -23,20 +23,20 @@ const MiningTicker = () => {
   return (
     <Card className="bg-white/10 backdrop-blur-sm p-6 w-full">
       <div className="space-y-4">
-        <div className="flex justify-between items-center">
-          <span className="text-white/80">Pool Size:</span>
-          <div className="flex flex-wrap gap-2">
-            <span className="text-white font-medium px-4 py-2 bg-blue-500 rounded">
-              XLarge (100K)
-            </span>
+          <div className="flex justify-between items-center">
+            <span className="text-white/80">MobileMonero Network:</span>
+            <div className="flex flex-wrap gap-2">
+              <span className="text-white font-medium px-4 py-2 bg-purple-500 rounded">
+                XLarge (100K+ Mobile Miners)
+              </span>
+            </div>
           </div>
-        </div>
         <div className="flex justify-between items-center">
           <span className="text-white/80">Hash Rate:</span>
           <span className="text-white font-mono">{poolConfig.hashRate.toLocaleString()} H/s</span>
         </div>
         <div className="flex justify-between items-center">
-          <span className="text-white/80">Active Miners:</span>
+          <span className="text-white/80">Active Mobile Miners:</span>
           <span className="text-white font-mono">{poolConfig.miners.toLocaleString()}</span>
         </div>
         <div className="flex justify-between items-center">
