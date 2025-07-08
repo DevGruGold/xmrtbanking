@@ -4,16 +4,23 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { Web3Modal } from '@web3modal/react';
-import { config, web3ModalConfig } from './lib/web3config';
-import { WagmiConfig } from '@web3modal/ethereum';
+import { WagmiProvider } from 'wagmi';
+import { createWeb3Modal } from '@web3modal/wagmi/react';
+import { config } from './lib/web3config';
 import Index from "./pages/Index";
 
 const queryClient = new QueryClient();
 
+// 3. Create modal
+createWeb3Modal({
+  wagmiConfig: config,
+  projectId: '6054bd6688c6860ed806775db1c24f15',
+  enableAnalytics: true,
+})
+
 const App = () => (
   <QueryClientProvider client={queryClient}>
-    <WagmiConfig config={config}>
+    <WagmiProvider config={config}>
       <TooltipProvider>
         <Toaster />
         <Sonner />
@@ -23,8 +30,7 @@ const App = () => (
           </Routes>
         </BrowserRouter>
       </TooltipProvider>
-    </WagmiConfig>
-    <Web3Modal projectId={web3ModalConfig.projectId} ethereumClient={config.autoConnect} />
+    </WagmiProvider>
   </QueryClientProvider>
 );
 

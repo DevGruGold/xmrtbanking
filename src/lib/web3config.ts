@@ -1,30 +1,19 @@
+import { defaultWagmiConfig } from '@web3modal/wagmi/react/config'
+import { mainnet, sepolia } from 'wagmi/chains'
 
-import { configureChains, createConfig } from '@web3modal/ethereum'
-import { mainnet, sepolia } from '@web3modal/ethereum'
-import { publicProvider } from '@web3modal/ethereum'
+// 1. Get projectId from environment or use provided one
+const projectId = '6054bd6688c6860ed806775db1c24f15'
 
-// Configure chains & providers
-export const { publicClient, webSocketPublicClient } = configureChains(
-  [mainnet, sepolia],
-  [
-    // We're using the environment variables that are already in place
-    publicProvider()
-  ]
-)
-
-// Create wagmi config
-export const config = createConfig({
-  autoConnect: true,
-  publicClient,
-  webSocketPublicClient,
-})
-
-// Create Web3Modal configuration
-export const web3ModalConfig = {
-  projectId: '6054bd6688c6860ed806775db1c24f15', // Using the provided project ID
-  theme: 'dark',
-  accentColor: 'purple',
-  ethereum: {
-    appName: 'Asset Tokenization Platform',
-  },
+// 2. Create wagmiConfig
+const metadata = {
+  name: 'MobileMonero by XMRT Solutions',
+  description: 'The premier mobile Monero mining solution',
+  url: 'https://mobilemonero.com',
+  icons: ['https://avatars.githubusercontent.com/u/37784886']
 }
+
+export const config = defaultWagmiConfig({
+  chains: [mainnet, sepolia],
+  projectId,
+  metadata,
+})
