@@ -23,7 +23,7 @@ export const Header = () => (
       </Button>
       <Button 
         variant="outline"
-        className="border-purple-500 text-purple-400 hover:bg-purple-500/10"
+        className="border-purple-400 text-purple-300 hover:bg-purple-500 hover:text-white transition-colors"
         onClick={() => window.open('https://xmrt.io', '_blank')}
       >
         <ExternalLink className="h-4 w-4 mr-2" />

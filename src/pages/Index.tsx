@@ -65,7 +65,7 @@ const Index = () => {
                 <Button 
                   size="lg"
                   variant="outline"
-                  className="border-white text-white hover:bg-white/10"
+                  className="border-white text-white hover:bg-white hover:text-black transition-colors"
                   onClick={() => window.open('https://xmrt.io', '_blank')}
                 >
                   Learn More at XMRT.io
