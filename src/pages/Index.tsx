@@ -23,7 +23,7 @@ const platforms: Platform[] = [
     name: 'MobileMonero (XMRig) PC',
     icon: Monitor,
     hashrate: 'Full Desktop Performance',
-    requirements: ['Windows/Linux/MacOS', '4GB RAM', 'x86-64 processor']
+    requirements: ['Windows/Linux/MacOS', '4GB RAM', 'ARM processor']
   }
 ];
 
