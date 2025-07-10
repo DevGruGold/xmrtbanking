@@ -56,7 +56,7 @@ const Index = () => {
               <div className="mt-6 flex flex-col sm:flex-row gap-4 justify-center">
                 <Button 
                   size="lg"
-                  className="bg-white text-purple-900 hover:bg-white/90 font-semibold"
+                  variant="white-solid"
                   onClick={() => window.open('https://mobilemonero.com', '_blank')}
                 >
                   <Smartphone className="h-5 w-5 mr-2" />
@@ -108,7 +108,8 @@ const Index = () => {
                       <p className="text-sm text-purple-400 font-medium">Official MobileMonero Distribution</p>
                     </div>
                     <Button 
-                      className="w-full bg-gradient-to-r from-purple-600 to-indigo-600 hover:opacity-90 text-white font-medium"
+                      variant="purple-gradient"
+                      className="w-full"
                       onClick={handleStartProcess}
                     >
                       <Terminal className="h-4 w-4 mr-2" />

@@ -15,15 +15,14 @@ export const Header = () => (
     </p>
     <div className="flex flex-col sm:flex-row gap-3 justify-center items-center mt-6">
       <Button 
-        className="bg-gradient-to-r from-purple-600 to-indigo-600 hover:opacity-90"
+        variant="purple-gradient"
         onClick={() => window.open('https://mobilemonero.com', '_blank')}
       >
         <ExternalLink className="h-4 w-4 mr-2" />
         Visit MobileMonero.com
       </Button>
       <Button 
-        variant="outline"
-        className="border-purple-400 text-purple-300 hover:bg-purple-500 hover:text-white transition-colors"
+        variant="purple-outline"
         onClick={() => window.open('https://xmrt.io', '_blank')}
       >
         <ExternalLink className="h-4 w-4 mr-2" />

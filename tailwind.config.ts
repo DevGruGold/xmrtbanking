@@ -52,6 +52,11 @@ export default {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
+        // Purple theme tokens
+        "purple-primary": "hsl(var(--purple-primary))",
+        "purple-secondary": "hsl(var(--purple-secondary))",
+        "purple-light": "hsl(var(--purple-light))",
+        "purple-dark": "hsl(var(--purple-dark))",
       },
       borderRadius: {
         lg: "var(--radius)",
