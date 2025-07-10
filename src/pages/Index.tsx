@@ -16,7 +16,7 @@ const platforms: Platform[] = [
     name: 'MobileMonero (XMRig) Mobile',
     icon: Smartphone,
     hashrate: 'Optimized for Mobile',
-    requirements: ['Android 7.0+', '2GB RAM', 'ARM processor']
+    requirements: ['Android 7.0+', '6GB RAM', 'ARM processor']
   },
   {
     id: 'pc',
