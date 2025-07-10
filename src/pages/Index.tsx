@@ -46,6 +46,11 @@ const Index = () => {
         <div className="max-w-6xl mx-auto space-y-8">
           {/* Hero Section */}
           <div className="relative overflow-hidden rounded-2xl bg-gradient-to-r from-purple-900 to-indigo-900 p-8 mb-6">
+            {/* Background decorative elements */}
+            <div className="absolute -right-20 -bottom-20 w-80 h-80 bg-purple-600 rounded-full blur-3xl opacity-30 animate-pulse pointer-events-none" />
+            <div className="absolute -left-20 -top-20 w-80 h-80 bg-indigo-600 rounded-full blur-3xl opacity-30 animate-pulse pointer-events-none" />
+            
+            {/* Content wrapper with proper z-index */}
             <div className="relative z-10 animate-fade-in">
               <h1 className="text-5xl font-bold text-white mb-4 tracking-tight">
                 Mine Monero on Mobile
@@ -53,7 +58,7 @@ const Index = () => {
               <p className="text-xl text-white/90 max-w-2xl mx-auto leading-relaxed">
                 Experience the power of MobileMonero - the premier mobile XMR mining solution by XMRT Solutions. Start mining cryptocurrency directly on your Android device.
               </p>
-              <div className="mt-6 flex flex-col sm:flex-row gap-4 justify-center">
+              <div className="mt-6 flex flex-col sm:flex-row gap-4 justify-center relative z-20">
                 <Button 
                   size="lg"
                   variant="white-solid"
@@ -64,16 +69,13 @@ const Index = () => {
                 </Button>
                 <Button 
                   size="lg"
-                  variant="outline"
-                  className="border-white text-white hover:bg-white hover:text-black transition-colors"
+                  className="border-2 border-white bg-transparent text-white hover:bg-white hover:text-purple-900 transition-all duration-200 font-medium"
                   onClick={() => window.open('https://xmrt.io', '_blank')}
                 >
                   Learn More at XMRT.io
                 </Button>
               </div>
             </div>
-            <div className="absolute -right-20 -bottom-20 w-80 h-80 bg-purple-600 rounded-full blur-3xl opacity-30 animate-pulse" />
-            <div className="absolute -left-20 -top-20 w-80 h-80 bg-indigo-600 rounded-full blur-3xl opacity-30 animate-pulse" />
           </div>
 
           {/* MobileMonero Community & Stats */}
