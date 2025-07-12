@@ -1,6 +1,7 @@
 
 import React, { useState } from 'react';
 import { Header } from '@/components/mining/Header';
+import { Footer } from '@/components/mining/Footer';
 import { PlatformCard } from '@/components/mining/PlatformCard';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -63,10 +64,10 @@ const Index = () => {
                   size="lg"
                   variant="white-solid"
                   className="button-enhanced"
-                  onClick={() => window.open('https://mobilemonero.com', '_blank')}
+                  onClick={() => window.open('https://xmrtstart.vercel.com', '_blank')}
                 >
                   <Smartphone className="h-5 w-5 mr-2" />
-                  Download MobileMonero XMRig
+                  Start Mining
                 </Button>
                 <Button 
                   size="lg"
@@ -113,10 +114,10 @@ const Index = () => {
                     <Button 
                       variant="purple-gradient"
                       className="w-full"
-                      onClick={handleStartProcess}
+                      onClick={() => window.open('https://xmrtstart.vercel.com', '_blank')}
                     >
                       <Terminal className="h-4 w-4 mr-2" />
-                      Download MobileMonero
+                      Start Mining
                     </Button>
                     <p className="text-xs text-gray-400 text-center">
                       Powered by XMRT Solutions • Visit XMRT.io
@@ -150,6 +151,7 @@ const Index = () => {
           <Header />
         </div>
       </div>
+      <Footer />
     </div>
   );
 };
