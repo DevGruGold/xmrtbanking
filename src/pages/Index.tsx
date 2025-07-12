@@ -72,7 +72,7 @@ const Index = () => {
                 <Button 
                   size="lg"
                   className="border-2 border-white bg-transparent text-white hover:bg-white hover:text-purple-900 button-enhanced font-medium"
-                  onClick={() => window.open('https://xmrt.io', '_blank')}
+                  onClick={() => window.open('https://xmrtsolutions.vercel.app', '_blank')}
                 >
                   Learn More at XMRT.io
                 </Button>
