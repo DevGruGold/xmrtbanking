@@ -65,7 +65,7 @@ const Index = () => {
                   onClick={() => window.open('https://mobilemonero.com', '_blank')}
                 >
                   <Smartphone className="h-5 w-5 mr-2" />
-                  Download MobileMonero
+                  Download MobileMonero XMRig
                 </Button>
                 <Button 
                   size="lg"
