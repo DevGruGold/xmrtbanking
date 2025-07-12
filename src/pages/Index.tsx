@@ -62,6 +62,7 @@ const Index = () => {
                 <Button 
                   size="lg"
                   variant="white-solid"
+                  className="button-enhanced"
                   onClick={() => window.open('https://mobilemonero.com', '_blank')}
                 >
                   <Smartphone className="h-5 w-5 mr-2" />
@@ -69,7 +70,7 @@ const Index = () => {
                 </Button>
                 <Button 
                   size="lg"
-                  className="border-2 border-white bg-transparent text-white hover:bg-white hover:text-purple-900 transition-all duration-200 font-medium"
+                  className="border-2 border-white bg-transparent text-white hover:bg-white hover:text-purple-900 button-enhanced font-medium"
                   onClick={() => window.open('https://xmrt.io', '_blank')}
                 >
                   Learn More at XMRT.io
