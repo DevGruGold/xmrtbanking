@@ -64,7 +64,7 @@ const Index = () => {
                   size="lg"
                   variant="white-solid"
                   className="button-enhanced"
-                  onClick={() => window.open('https://xmrtstart.vercel.com', '_blank')}
+                  onClick={() => window.open('https://xmrtstart.vercel.app', '_blank')}
                 >
                   <Smartphone className="h-5 w-5 mr-2" />
                   Start Mining
@@ -114,7 +114,7 @@ const Index = () => {
                     <Button 
                       variant="purple-gradient"
                       className="w-full"
-                      onClick={() => window.open('https://xmrtstart.vercel.com', '_blank')}
+                      onClick={() => window.open('https://xmrtstart.vercel.app', '_blank')}
                     >
                       <Terminal className="h-4 w-4 mr-2" />
                       Start Mining
