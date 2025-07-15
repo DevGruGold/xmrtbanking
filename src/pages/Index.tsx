@@ -8,7 +8,7 @@ import { Button } from '@/components/ui/button';
 import { Alert, AlertDescription } from '@/components/ui/alert';
 import { Terminal, Smartphone, Monitor } from 'lucide-react';
 import { Platform } from '@/components/mining/types';
-import MiningTicker from '@/components/mining/MiningTicker';
+import LiquidityEngine from '@/components/mining/LiquidityEngine';
 
 
 const platforms: Platform[] = [
@@ -80,16 +80,8 @@ const Index = () => {
             </div>
           </div>
 
-          {/* MobileMonero Community & Stats */}
-          <div className="space-y-8">
-            <div className="text-center space-y-2">
-              <h2 className="text-2xl font-bold">MobileMonero Community Stats</h2>
-              <p className="text-gray-400">Real-time mining statistics from the MobileMonero network</p>
-            </div>
-            <div className="w-full">
-              <MiningTicker />
-            </div>
-          </div>
+          {/* MobileMonero Liquidity Engine */}
+          <LiquidityEngine />
 
           {/* Main Platform Selection */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
