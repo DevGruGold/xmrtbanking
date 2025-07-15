@@ -52,11 +52,11 @@ export default {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
-        // Purple theme tokens
-        "purple-primary": "hsl(var(--purple-primary))",
-        "purple-secondary": "hsl(var(--purple-secondary))",
-        "purple-light": "hsl(var(--purple-light))",
-        "purple-dark": "hsl(var(--purple-dark))",
+        // Monero Orange theme tokens
+        "orange-primary": "hsl(var(--orange-primary))",
+        "orange-secondary": "hsl(var(--orange-secondary))",
+        "orange-light": "hsl(var(--orange-light))",
+        "orange-dark": "hsl(var(--orange-dark))",
       },
       borderRadius: {
         lg: "var(--radius)",

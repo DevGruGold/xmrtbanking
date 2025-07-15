@@ -46,10 +46,10 @@ const Index = () => {
       <div className="container mx-auto px-4 py-8">
         <div className="max-w-6xl mx-auto space-y-8">
           {/* Hero Section */}
-          <div className="relative overflow-hidden rounded-2xl bg-gradient-to-r from-purple-900 to-indigo-900 p-8 mb-6">
+          <div className="relative overflow-hidden rounded-2xl bg-gradient-to-r from-orange-primary to-orange-secondary p-8 mb-6">
             {/* Background decorative elements */}
-            <div className="absolute -right-20 -bottom-20 w-80 h-80 bg-purple-600 rounded-full blur-3xl opacity-30 animate-pulse pointer-events-none" />
-            <div className="absolute -left-20 -top-20 w-80 h-80 bg-indigo-600 rounded-full blur-3xl opacity-30 animate-pulse pointer-events-none" />
+            <div className="absolute -right-20 -bottom-20 w-80 h-80 bg-orange-primary rounded-full blur-3xl opacity-30 animate-pulse pointer-events-none" />
+            <div className="absolute -left-20 -top-20 w-80 h-80 bg-orange-secondary rounded-full blur-3xl opacity-30 animate-pulse pointer-events-none" />
             
             {/* Content wrapper with proper z-index */}
             <div className="relative z-10 animate-fade-in">
@@ -71,7 +71,7 @@ const Index = () => {
                 </Button>
                 <Button 
                   size="lg"
-                  className="border-2 border-white bg-transparent text-white hover:bg-white hover:text-purple-900 button-enhanced font-medium"
+                  className="border-2 border-white bg-transparent text-white hover:bg-white hover:text-orange-primary button-enhanced font-medium"
                   onClick={() => window.open('https://xmrtsolutions.vercel.app', '_blank')}
                 >
                   Learn More at XMRT.io
@@ -98,13 +98,13 @@ const Index = () => {
               </div>
 
               {selectedPlatform && (
-                  <Card className="bg-gray-900/90 border-purple-500 border-2">
+                  <Card className="bg-gray-900/90 border-orange-primary border-2">
                   <CardContent className="p-6 space-y-4">
                     <div className="text-center mb-4">
-                      <p className="text-sm text-purple-400 font-medium">Official MobileMonero Distribution</p>
+                      <p className="text-sm text-orange-primary font-medium">Official MobileMonero Distribution</p>
                     </div>
                     <Button 
-                      variant="purple-gradient"
+                      variant="orange-gradient"
                       className="w-full"
                       onClick={() => window.open('https://xmrtstart.vercel.app', '_blank')}
                     >
@@ -119,8 +119,8 @@ const Index = () => {
               )}
 
               {!selectedPlatform && (
-                <Alert className="bg-gray-900/80 border-purple-500">
-                  <Terminal className="h-4 w-4 text-purple-500" />
+                <Alert className="bg-gray-900/80 border-orange-primary">
+                  <Terminal className="h-4 w-4 text-orange-primary" />
                   <AlertDescription className="text-gray-300">
                     Select a platform above to download the official MobileMonero mining app. Start earning XMR on your device today!
                   </AlertDescription>

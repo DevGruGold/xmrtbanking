@@ -11,10 +11,10 @@ const LiquidityEngine = () => {
       </div>
       
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <Card className="bg-white/10 backdrop-blur-sm p-6 border-purple-500/20">
+        <Card className="bg-white/10 backdrop-blur-sm p-6 border-orange-primary/20">
           <div className="space-y-4">
             <div className="flex items-center space-x-2">
-              <Coins className="h-6 w-6 text-purple-400" />
+              <Coins className="h-6 w-6 text-orange-primary" />
               <h3 className="text-lg font-semibold text-white">Mining Revenue</h3>
             </div>
             <p className="text-white/80 text-sm">
@@ -23,10 +23,10 @@ const LiquidityEngine = () => {
           </div>
         </Card>
 
-        <Card className="bg-white/10 backdrop-blur-sm p-6 border-purple-500/20">
+        <Card className="bg-white/10 backdrop-blur-sm p-6 border-orange-primary/20">
           <div className="space-y-4">
             <div className="flex items-center space-x-2">
-              <ArrowRight className="h-6 w-6 text-purple-400" />
+              <ArrowRight className="h-6 w-6 text-orange-primary" />
               <h3 className="text-lg font-semibold text-white">Liquidity Flow</h3>
             </div>
             <p className="text-white/80 text-sm">
@@ -35,10 +35,10 @@ const LiquidityEngine = () => {
           </div>
         </Card>
 
-        <Card className="bg-white/10 backdrop-blur-sm p-6 border-purple-500/20">
+        <Card className="bg-white/10 backdrop-blur-sm p-6 border-orange-primary/20">
           <div className="space-y-4">
             <div className="flex items-center space-x-2">
-              <TrendingUp className="h-6 w-6 text-purple-400" />
+              <TrendingUp className="h-6 w-6 text-orange-primary" />
               <h3 className="text-lg font-semibold text-white">DAO Funding</h3>
             </div>
             <p className="text-white/80 text-sm">
@@ -48,9 +48,9 @@ const LiquidityEngine = () => {
         </Card>
       </div>
 
-      <Card className="bg-gradient-to-r from-purple-900/50 to-indigo-900/50 backdrop-blur-sm p-6 border-purple-500/30">
+      <Card className="bg-gradient-to-r from-orange-primary/50 to-orange-secondary/50 backdrop-blur-sm p-6 border-orange-primary/30">
         <div className="flex items-center space-x-4">
-          <Users className="h-8 w-8 text-purple-400" />
+          <Users className="h-8 w-8 text-orange-primary" />
           <div className="space-y-1">
             <h3 className="text-xl font-semibold text-white">Community-Powered Ecosystem</h3>
             <p className="text-white/80">
