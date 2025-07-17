@@ -54,36 +54,43 @@ const Index = () => {
             {/* Content wrapper with proper z-index */}
             <div className="relative z-10 animate-fade-in">
               <h1 className="text-5xl font-bold text-white mb-4 tracking-tight">
-                Mine Monero on Mobile
+                AI-Led Decentralized Governance
               </h1>
               <p className="text-xl text-white/90 max-w-2xl mx-auto leading-relaxed">
-                Experience the power of MobileMonero - the premier mobile XMR mining solution by XMRT Solutions. Start mining cryptocurrency directly on your Android device.
+                The first fully autonomous DAO governed by AI agents using ElizaOS, LangChain, and LangFlow. Experience the future of decentralized decision-making.
               </p>
               <div className="mt-6 flex flex-col sm:flex-row gap-4 justify-center relative z-20">
                 <Button 
                   size="lg"
                   variant="white-solid"
                   className="button-enhanced"
-                  onClick={() => window.open('https://xmrtstart.vercel.app', '_blank')}
+                  onClick={() => window.open('https://xmrt.io', '_blank')}
                 >
-                  <Smartphone className="h-5 w-5 mr-2" />
-                  Start Mining
+                  <Terminal className="h-5 w-5 mr-2" />
+                  Explore XMRT DAO
                 </Button>
                 <Button 
                   size="lg"
                   className="border-2 border-white bg-transparent text-white hover:bg-white hover:text-orange-primary button-enhanced font-medium"
-                  onClick={() => window.open('https://xmrtsolutions.vercel.app', '_blank')}
+                  onClick={() => window.open('https://mobilemonero.com', '_blank')}
                 >
-                  Learn More at XMRT.io
+                  View Liquidity Engine
                 </Button>
               </div>
             </div>
           </div>
 
-          {/* MobileMonero Liquidity Engine */}
+          {/* Header Component */}
+          <Header />
+
+          {/* AI-Driven Governance Section */}
           <LiquidityEngine />
 
-          {/* Main Platform Selection */}
+          {/* Liquidity Engine Platform Selection */}
+          <div className="text-center space-y-4 mb-6">
+            <h2 className="text-2xl font-bold">MobileMonero Liquidity Engine</h2>
+            <p className="text-gray-400">Power the DAO through distributed mining operations</p>
+          </div>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
             <div className="space-y-6">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -101,18 +108,18 @@ const Index = () => {
                   <Card className="bg-gray-900/90 border-orange-primary border-2">
                   <CardContent className="p-6 space-y-4">
                     <div className="text-center mb-4">
-                      <p className="text-sm text-orange-primary font-medium">Official MobileMonero Distribution</p>
+                      <p className="text-sm text-orange-primary font-medium">Contribute to DAO Liquidity</p>
                     </div>
                     <Button 
                       variant="orange-gradient"
                       className="w-full"
-                      onClick={() => window.open('https://xmrtstart.vercel.app', '_blank')}
+                      onClick={() => window.open('https://mobilemonero.com', '_blank')}
                     >
                       <Terminal className="h-4 w-4 mr-2" />
-                      Start Mining
+                      Join Mining Network
                     </Button>
                     <p className="text-xs text-gray-400 text-center">
-                      Powered by XMRT Solutions • Visit XMRT.io
+                      Powered by XMRT DAO • Governed by AI Agents
                     </p>
                   </CardContent>
                 </Card>
@@ -122,7 +129,7 @@ const Index = () => {
                 <Alert className="bg-gray-900/80 border-orange-primary">
                   <Terminal className="h-4 w-4 text-orange-primary" />
                   <AlertDescription className="text-gray-300">
-                    Select a platform above to download the official MobileMonero mining app. Start earning XMR on your device today!
+                    Select a platform above to join the MobileMonero liquidity network. Help power the XMRT DAO ecosystem through distributed mining!
                   </AlertDescription>
                 </Alert>
               )}
@@ -140,7 +147,6 @@ const Index = () => {
             />
           </div>
 
-          <Header />
         </div>
       </div>
       <Footer />

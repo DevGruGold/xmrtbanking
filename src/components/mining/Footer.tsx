@@ -11,7 +11,7 @@ export const Footer = () => {
             <div className="space-y-4">
               <h3 className="text-xl font-bold text-orange-primary">XMRT DAO</h3>
               <p className="text-gray-300 text-sm">
-                Decentralized autonomous organization powering the future of mobile Monero mining through innovative solutions and community-driven development.
+                AI-led decentralized autonomous organization governing through intelligent agents powered by ElizaOS, LangChain, and LangFlow frameworks.
               </p>
             </div>
 
