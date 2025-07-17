@@ -9,6 +9,7 @@ import { Alert, AlertDescription } from '@/components/ui/alert';
 import { Terminal, Smartphone, Monitor } from 'lucide-react';
 import { Platform } from '@/components/mining/types';
 import LiquidityEngine from '@/components/mining/LiquidityEngine';
+import AutomationDemo from '@/components/mining/AutomationDemo';
 
 
 const platforms: Platform[] = [
@@ -79,6 +80,9 @@ const Index = () => {
               </div>
             </div>
           </div>
+
+          {/* Live Automation Demo */}
+          <AutomationDemo />
 
           {/* Header Component */}
           <Header />
