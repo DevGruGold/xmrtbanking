@@ -147,45 +147,9 @@ const AutomationDemo = () => {
   };
 
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
-      {/* Real-time Stats */}
-      <Card className="bg-white/5 backdrop-blur-sm border-orange-primary/20 p-6">
-        <div className="space-y-4">
-          <div className="flex items-center space-x-2">
-            <Bot className="h-5 w-5 text-orange-primary" />
-            <h3 className="text-lg font-semibold text-white">Live AI Operations</h3>
-          </div>
-          <div className="grid grid-cols-2 gap-4">
-            <div className="space-y-1">
-              <div className="text-2xl font-bold text-orange-primary animate-pulse">
-                {stats.activeAgents}
-              </div>
-              <div className="text-xs text-gray-400">Active Agents</div>
-            </div>
-            <div className="space-y-1">
-              <div className="text-2xl font-bold text-green-400">
-                {stats.decisionsPerHour}
-              </div>
-              <div className="text-xs text-gray-400">Decisions/Hour</div>
-            </div>
-            <div className="space-y-1">
-              <div className="text-sm font-bold text-blue-400">
-                ${stats.liquidityOptimized.toLocaleString()}
-              </div>
-              <div className="text-xs text-gray-400">Liquidity Optimized</div>
-            </div>
-            <div className="space-y-1">
-              <div className="text-sm font-bold text-purple-400">
-                {stats.governanceProposals}
-              </div>
-              <div className="text-xs text-gray-400">Proposals Processed</div>
-            </div>
-          </div>
-        </div>
-      </Card>
-
+    <div className="mb-8">
       {/* Live Activity Feed */}
-      <Card className="bg-white/5 backdrop-blur-sm border-orange-primary/20 p-6 lg:col-span-2">
+      <Card className="bg-white/5 backdrop-blur-sm border-orange-primary/20 p-6">
         <div className="space-y-4">
           <div className="flex items-center space-x-2">
             <Activity className="h-5 w-5 text-orange-primary animate-pulse" />
